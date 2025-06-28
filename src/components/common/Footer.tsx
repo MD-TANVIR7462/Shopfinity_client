@@ -15,19 +15,19 @@ const Footer = () => {
               alt="GizmoBuy"
               className="w-6 lg:w-8 h-6 lg:h-8 object-cover"
             />
-            <span className="font-bold text-base lg:text-xl">GizmoBuy</span>
+            <span className="font-bold text-base lg:text-xl">Shopfinity</span>
           </Link>
           <div>
             <p className="text-offgray text-sm mt-4 lg:mt-6">
               Customer Support:
             </p>
-            <p className="text-sm lg:text-base">+880-1740-020464</p>
+            <p className="text-sm lg:text-base">+880-1998-863753</p>
           </div>
           <div className="my-4 lg:my-5 text-sm text-offgray">
-            Jinjirtala, Dhunat Pouroshava <br />
-            Dhunat 5850, Bogura, Bangladesh
+            Hillview, Bayezid <br />
+            Dhunat 5850, Chittagong, Bangladesh
           </div>
-          <div className="text-sm lg:text-base">babulakterfsd@gmail.com</div>
+          <div className="text-sm lg:text-base">mdtanvir7462@gmail.com</div>
         </div>
         {/* top categories */}
         <div className="col-sapn-12 lg:col-span-3 ">
