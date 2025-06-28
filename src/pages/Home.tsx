@@ -1,3 +1,4 @@
+import Loader from '@/components/common/Loader';
 import BestDeals from '@/components/homepage/BestDeals';
 import Blog from '@/components/homepage/Blog';
 import Collections from '@/components/homepage/Collections';
@@ -17,9 +18,7 @@ const Home = () => {
 
   if (isLoading)
     return (
-      <div className="min-h-screen flex flex-col gap-y-3 items-center mt-44">
-        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-red-300"></div>
-      </div>
+   <Loader/>
     );
 
   return (

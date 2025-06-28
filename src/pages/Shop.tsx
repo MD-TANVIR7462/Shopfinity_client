@@ -26,6 +26,7 @@ import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
 import headphoneImage from '../assets/images/headphone.png';
 import bannerWatch from '../assets/images/watchbanner.png';
+import Loader from '@/components/common/Loader';
 
 const Shop = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -606,9 +607,7 @@ const Shop = () => {
             {/* product cards */}
             <div className="grid grid-cols-12 gap-x-1 md:gap-x-4 gap-y-6 lg:gap-x-6 lg:gap-y-8 mt-8 md:mt-0">
               {isLoading ? (
-                <div className="mt-16 col-span-12 flex justify-center">
-                  <div className="animate-spin rounded-full h-16 lg:h-32 w-16 lg:w-32 border-t-2 border-b-2 border-red-300 mx-auto"></div>
-                </div>
+               <Loader/>
               ) : products?.length < 1 ? (
                 <div className="mt-16 col-span-12">
                   <p className="text-xl lg:text-2xl text-orange font-semibold text-center">

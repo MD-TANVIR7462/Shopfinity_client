@@ -123,14 +123,14 @@ const Footer = () => {
             download app
           </p>
           <div className="links flex flex-col gap-y-3">
-            <a href="https://babulakter.com" target="_blank">
+            <a href="#" target="_blank">
               <img
                 src={appleapp}
                 alt="Download Apple App"
                 className="w-[90px] h-auto object-cover"
               />
             </a>
-            <a href="https://babulakter.com" target="_blank">
+            <a href="#" target="_blank">
               <img
                 src={androidapp}
                 alt="Download Android App"
@@ -151,11 +151,11 @@ const Footer = () => {
         <p className="text-offgray text-[13px] lg:text-sm font-semibold">
           Developed with love by{' '}
           <a
-            href="https://babulakter.com"
+            href="https://tanvir3.vercel.app/"
             target="_blank"
             className="hover:text-orange-400"
           >
-            Babul Akter
+            Tajul Islam Tanvir
           </a>
           &trade;
         </p>
