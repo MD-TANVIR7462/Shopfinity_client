@@ -195,7 +195,7 @@ const Support = () => {
                   Talk with use now
                 </p>
                 <h6 className="text-gray-500 font-semibold mt-4">
-                  +880-1740-020464
+                  +880-1998-863753
                 </h6>
                 <button className="bg-[rgba(45,165,243,1)] text-white py-1.5 md:py-2 lg:py-3 px-2 lg:px-8 rounded font-medium mt-6 flex items-center gap-x-1 md:gap-x-2">
                   Call Now <FaArrowRightLong />

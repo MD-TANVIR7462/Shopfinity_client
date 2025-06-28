@@ -236,7 +236,7 @@ const Navbar = () => {
           {/* phone */}
           <div className="phone flex items-center space-x-1 ml-auto">
             <PiPhoneDisconnectThin />
-            <span className="text-pure-gray text-sm">+880-1740-020464</span>
+            <span className="text-pure-gray text-sm">+880-1998-863753</span>
           </div>
         </div>
       </div>
