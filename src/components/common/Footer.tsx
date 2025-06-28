@@ -12,7 +12,7 @@ const Footer = () => {
           <Link className="flex gap-x-1 lg:gap-x-2 items-center lg:w-24" to="/">
             <img
               src={logo}
-              alt="GizmoBuy"
+              alt="Shopfinity"
               className="w-6 lg:w-8 h-6 lg:h-8 object-cover"
             />
             <span className="font-bold text-base lg:text-xl">Shopfinity</span>
@@ -143,7 +143,7 @@ const Footer = () => {
       <div className="h-[1px] bg-gray mt-16"></div>
       <div className="flex gap-x-8 justify-center items-center mt-2 lg:mt-6 flex-col lg:flex-row gap-y-2">
         <p className="text-offgray text-sm font-semibold mt-2 lg:mt-0">
-          All rights reserved by GizmoBuy &copy;2024
+            © {new Date().getFullYear()} Shopinity. All rights reserved.
         </p>
         <p className="text-offgray text-[13px] lg:text-sm font-semibold hidden lg:inline-block">
           |

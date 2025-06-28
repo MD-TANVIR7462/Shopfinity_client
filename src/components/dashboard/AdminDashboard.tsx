@@ -124,7 +124,7 @@ const AdminDashboard = () => {
               <h3
                 className={`text-md lg:text-xl font-bold text-center lg:text-left lg:mt-6 text-orange`}
               >
-                GizmoBuy
+                Shopinity
               </h3>
             </div>
           </Link>

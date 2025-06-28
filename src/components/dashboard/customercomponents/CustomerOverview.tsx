@@ -26,7 +26,7 @@ const CustomerOverview = () => {
       <p className="text-center lg:mt-2 md:text-md lg:w-2/3 lg:mx-auto">
         In this section, customer can see the overview of their account. They
         can see their total pending orders, completed orders and how much they
-        have spent on Gizmobuy. In our next update, we will add more features to
+        have spent on Shopinity. In our next update, we will add more features to
         this section.
       </p>
       <div className="mt-16 md:mt-20 lg:mt-24 grid grid-cols-1 lg:grid-cols-2 gap-x-4 gap-y-8 px-6 pb-8 lg:pb-16">

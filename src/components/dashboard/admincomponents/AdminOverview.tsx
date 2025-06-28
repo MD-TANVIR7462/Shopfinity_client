@@ -113,7 +113,7 @@ const AdminOverview = () => {
               : `$${(overViewData?.data?.totalProfitOfGizmobuy).toFixed(2)}`}
           </h3>
           <p className="text-lg font-semibold text-gray-400 mt-1.5">
-            Gizmobuy Profit
+            Shopinity Profit
           </p>
         </div>
       </div>

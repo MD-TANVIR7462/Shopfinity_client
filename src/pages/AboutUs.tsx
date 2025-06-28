@@ -28,7 +28,7 @@ const AboutUs = () => {
                 Who We Are
               </button>
               <h3 className="text-custom-black text-2xl lg:text-4xl font-semibold mt-3 lg:w-10/12">
-                GizmoBuy - largest electronics retail shop in the world.
+                Shopinity - largest electronics retail shop in the world.
               </h3>
               <p className="mt-2 lg:mt-4 text-pure-gray lg:w-11/12">
                 Pellentesque ultrices, dui vel hendrerit iaculis, ipsum velit

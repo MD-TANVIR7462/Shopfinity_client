@@ -69,7 +69,7 @@ const SellsReport = () => {
       <h3 className="text-center mt-10 lg:mt-14 text-2xl">Sells Report</h3>
       <p className="text-center lg:mt-2 md:text-md lg:w-2/3 lg:mx-auto">
         Welcome, {userProfileFromDb?.name}! Here you can see total sells history
-        of Gizmobuy. You can view daily sells, monthly sells, weekly sells or
+        of Shopinity. You can view daily sells, monthly sells, weekly sells or
         yearly sells. You will get a proper idea of your business's growth.
       </p>
 
@@ -140,7 +140,7 @@ const SellsReport = () => {
                   : allOrders?.gizmobuyProfit?.toFixed(2)
               }`}
             </h3>
-            <p className="text-xl font-semibold">Gizmobuy Profit</p>
+            <p className="text-xl font-semibold">Shopinity Profit</p>
           </div>
         </div>
       </div>

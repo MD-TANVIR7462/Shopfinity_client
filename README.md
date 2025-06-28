@@ -1,4 +1,4 @@
-# GizmoBuy (Frontend) - A multi vendor e-commerce platform
+# Shopinity (Frontend) - A multi vendor e-commerce platform
 
 ## Features
 

@@ -72,12 +72,12 @@ const Navbar = () => {
           <div className="flex flex-col md:flex-row gap-y-2 justify-between items-center py-3">
             {currentUser?.name ? (
               <h2 className="text-sm tracking-wider">
-                Welcome to gizmobuy,{' '}
+                Welcome to Shopinity,{' '}
                 <span className="text-orange-400">{currentUser?.name}</span>
               </h2>
             ) : (
               <h2 className="text-sm tracking-wider">
-                Welcome to gizmobuy store
+                Welcome to Shopinity store
               </h2>
             )}
             <div className="text-sm flex gap-x-2 items-center">
@@ -102,11 +102,11 @@ const Navbar = () => {
             <Link className="flex gap-x-1 lg:gap-x-2 items-center w-24" to="/">
               <img
                 src={logo}
-                alt="GizmoBuy"
+                alt="Shopinity"
                 className="w-6 lg:w-10 h-6 lg:h-10 object-cover"
               />
               <span className="font-bold text-xl md:text-2xl lg:text-2xl">
-                GizmoBuy
+                Shopinity
               </span>
             </Link>
             {/* menubar */}
