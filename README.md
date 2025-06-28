@@ -1,76 +1,42 @@
-   # SudsCart
+# GizmoBuy (Frontend) - A multi vendor e-commerce platform
 
-   ## Introduction
+## Features
 
-   Welcome to SudsCart - Your Ultimate Destination for Dishwashing Essentials! 🍽️🧼
+- JWT based secure authorization system with password hashing.
+- Smooth and better user experience ensured with redux persistence.
+- Sslcommerz integrated as payment gateway
+- Add to cart, add to favorite and some common ecommerce features.
+- Authorization based custom dashboard for better management system.
 
-   ## Getting Started
+## technologies:
 
-   Follow these simple steps to set up SudsCart on your local machine:
+      * Backend :
+          - TypeScript, Node.js, Express.js, MongoDB, Mongoose, Zod, Bcrypt, JWT, nodemailer, multer, cloudinary
 
-   ### Prerequisites
+      * Frontend :
+          - TypeScript, React, Redux, Tailwindcss, Rtk query, sonner, react-hook-form
 
-   Before you begin, ensure you have the following installed on your machine:
+## How to run
 
-   - Node.js (version 14 or higher)
-   - npm (Node Package Manager)
+- First, clone the repo and install the dependencies using `yarn install` command.
+- then, build the project using `yarn run build` command.
+- at last, run the project using `yarn run dev` command.
 
-   ### Installation
+### live link
 
-   1. **Clone the repository**:
+- client: https://gizmobuy.vercel.app
+- server: https://gizmobuy-backend.vercel.app
 
-      ```bash
-      git clone <repository-url>
-      ```
+### DEMO LOGIN DETAILS
 
-   2. **Navigate to the frontend directory**:
+      * Customer :
+          - email: democustomer@gmail.com
+          - password: customer123
 
-      ```bash
-      cd SudsCart/frontend
-      ```
+      * Vendor :
+          - email: demovendor@gmail.com
+          - password: vendor123
 
-   3. **Install dependencies**:
-
-      ```bash
-      npm install
-      ```
-
-   ## Usage
-
-   To run SudsCart locally, follow these steps:
-
-   1. **Start the development server**:
-
-      ```bash
-      npm run dev
-      ```
-
-   2. **Access the SudsCart website**:
-
-      Open your web browser and go to [http://localhost:3000](http://localhost:3000).
-
-   ## Features
-
-   Explore the rich features offered by SudsCart:
-
-   - **Home**: Discover featured products and promotions.
-   - **Categories**: Browse through different categories of dishwashing essentials.
-   - **Products**: View our extensive product catalog, filter by category, price, and rating.
-   - **Flash Sale**: Stay updated on limited-time offers and discounts.
-   - **About Us**: Learn more about SudsCart and our commitment to quality.
-   - **Contact Us**: Reach out to our dedicated customer support team for assistance.
-
-   ## Contributing
-
-   We welcome contributions from the community! If you'd like to contribute to SudsCart, please follow these steps:
-
-   1. **Fork the repository**.
-   2. **Create a new branch** for your feature or bug fix.
-   3. **Make your changes** and ensure tests pass.
-   4. **Commit your changes** and push to your fork.
-   5. **Submit a pull request**.
-
-   ## License
-
-   SudsCart is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
+      * Admin :
+          - email: demoadmin@gmail.com
+          - password: admin123
