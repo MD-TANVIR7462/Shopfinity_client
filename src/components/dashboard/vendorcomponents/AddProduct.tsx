@@ -354,7 +354,7 @@ const AddProduct = () => {
           </div>
           <div className="flex justify-end items-center">
             <button
-              className="bg-orange-400 rounded-md px-4 py-2 cursor-pointer text-white hover:bg-orange-500 transition-colors duration-300 ease-in-out flex items-center space-x-2 mt-8 disabled:opacity-50"
+              className="bg-orange-400 rounded-md px-4 py-2 cursor-pointer text-white hover:bg-green-700 transition-colors duration-300 ease-in-out flex items-center space-x-2 mt-8 disabled:opacity-50"
               type="submit"
               disabled={productDisplayImageUploadOngoing}
             >

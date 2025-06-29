@@ -38,7 +38,7 @@ const Macbook = () => {
           {macbook?.description.slice(0, 150)}
         </p>
         <button
-          className="bg-orange py-2 lg:py-2.5 px-3 lg:px-6 rounded text-white font-normal lg:font-semibold flex items-center gap-x-2 hover:bg-orange-500 lg:mt-6"
+          className="bg-orange py-2 lg:py-2.5 px-3 lg:px-6 rounded text-white font-normal lg:font-semibold flex items-center gap-x-2 hover:bg-green-700 lg:mt-6"
           onClick={() => navigate('/shop')}
         >
           Shop Now <FaArrowRightLong />

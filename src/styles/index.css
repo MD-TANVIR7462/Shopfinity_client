@@ -63,14 +63,12 @@ body {
 .text-pure-gray {
   color: #5f6c72;
 }
-.text-[#528b30] {
-  color: #2da5f3;
-}
+
 .bg-deep-bluish {
-  background-color: #2da5f3;
+  background-color: #387216;
 }
 .bg-bluish {
-  background-color: #1b6392;
+  background-color: #528b30;
 }
 .bg-offwhite {
   background-color: rgba(242, 244, 245, 1);
@@ -78,8 +76,11 @@ body {
 .text-orange {
   color: #fa8232;
 }
-.bg-orange {
-  background-color: #fa8232;
+.bg-orange{
+  background-color: #528b30;
+}
+.bg-deep-green{
+  background-color: #61fc07;
 }
 
 /* gradients */

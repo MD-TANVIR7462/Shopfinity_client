@@ -359,7 +359,7 @@ const ShoppingCart = () => {
                     </h5>
                   </div>
                   <Link to={`/${currentUser?._id}/check-out`}>
-                    <button className="bg-orange py-2 lg:py-2.5 px-3 lg:px-6 rounded text-white font-semibold flex items-center justify-center gap-x-2 hover:bg-orange-500 w-full mt-4 text-center text-nowrap">
+                    <button className="bg-orange py-2 lg:py-2.5 px-3 lg:px-6 rounded text-white font-semibold flex items-center justify-center gap-x-2 hover:bg-green-700 w-full mt-4 text-center text-nowrap">
                       Proceed to checkout <FaArrowRightLong />
                     </button>
                   </Link>
@@ -383,7 +383,7 @@ const ShoppingCart = () => {
                     onChange={(e) => setCouponToBeApplied(e.target.value)}
                   />
                   <button
-                    className="bg-deep-bluish py-2 lg:py-2.5 px-3 lg:px-6 rounded text-white font-semibold flex items-center justify-center gap-x-2 hover:bg-orange-500 w-[180px] text-center transition-all duration-300"
+                    className="bg-deep-bluish py-2 lg:py-2.5 px-3 lg:px-6 rounded text-white font-semibold flex items-center justify-center gap-x-2 hover:bg-green-700 w-[180px] text-center transition-all duration-300"
                     onClick={() => {
                       calculateAppliedDiscount(couponToBeApplied);
                       setAppliedCoupon(couponToBeApplied);

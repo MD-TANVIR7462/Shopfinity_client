@@ -133,7 +133,7 @@ const VendorManageProducts = () => {
         <div className="flex flex-col space-y-3 lg:flex-row justify-between items-center mt-8">
           {/* add product button */}
           <Link to="/dashboard/vendor/manage-products/add-product">
-            <div className="bg-orange-400 rounded-md px-4 py-2 cursor-pointer text-white hover:bg-orange-500 transition-colors duration-300 ease-in-out flex items-center space-x-2 mt-3">
+            <div className="bg-orange-400 rounded-md px-4 py-2 cursor-pointer text-white hover:bg-green-700 transition-colors duration-300 ease-in-out flex items-center space-x-2 mt-3">
               <IoIosAddCircleOutline style={{ fontSize: '18px' }} />{' '}
               <span>Add Product</span>
             </div>

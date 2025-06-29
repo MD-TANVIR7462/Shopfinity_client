@@ -53,7 +53,7 @@ const Carousel = () => {
                 </p>
                 <div className="mt-6">
                   <button
-                    className="bg-orange py-2 lg:py-2.5 px-3 lg:px-6 rounded text-white font-semibold flex items-center gap-x-2 hover:bg-orange-500"
+                    className="bg-orange py-2 lg:py-2.5 px-3 lg:px-6 rounded text-white font-semibold flex items-center gap-x-2 hover:bg-green-700 "
                     onClick={() => navigate('/shop')}
                   >
                     Shop Now <FaArrowRightLong />
@@ -70,7 +70,7 @@ const Carousel = () => {
               </div>
               {/*product price*/}
               <div className="cols-span-12 lg:col-span-2 order-first lg:order-3 ml-auto mb-4">
-                <div className="h-10 md:h-16 w-10 md:w-16 p-6 rounded-full bg-deep-bluish flex justify-center items-center ml-8">
+                <div className="h-10 md:h-16 w-10 md:w-16 p-6 rounded-full bg-[#528b30] flex justify-center items-center ml-8">
                   <p className="text-white font-bold text-sm md:text-base">{`$${product?.price}`}</p>
                 </div>
               </div>
@@ -95,7 +95,7 @@ const Carousel = () => {
 
             <div className="mt-4">
               <button
-                className="bg-orange py-2 px-4 text-sm rounded text-white font-semibold flex items-center gap-x-2 hover:bg-orange-500"
+                className="bg-orange py-2 px-4 text-sm rounded text-white font-semibold flex items-center gap-x-2 hover:bg-green-700"
                 onClick={() => navigate('/shop')}
               >
                 Shop Now <FaArrowRightLong />
@@ -130,7 +130,7 @@ const Carousel = () => {
 
             <div className="mt-4">
               <button
-                className="bg-orange py-2 px-4 text-sm rounded text-white font-semibold flex items-center gap-x-2 hover:bg-orange-500"
+                className="bg-orange py-2 px-4 text-sm rounded text-white font-semibold flex items-center gap-x-2 hover:bg-green-700"
                 onClick={() => navigate('/shop')}
               >
                 Shop Now <FaArrowRightLong />

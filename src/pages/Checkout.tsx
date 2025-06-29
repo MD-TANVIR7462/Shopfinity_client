@@ -406,7 +406,7 @@ const Checkout = () => {
                   </h5>
                 </div>
                 <button
-                  className={`bg-orange py-2 lg:py-2.5 px-3 lg:px-6 rounded text-white font-semibold flex items-center justify-center gap-x-2 hover:bg-orange-500 w-full mt-4 text-center text-nowrap disabled:opacity-50`}
+                  className={`bg-orange py-2 lg:py-2.5 px-3 lg:px-6 rounded text-white font-semibold flex items-center justify-center gap-x-2 hover:bg-green-700 w-full mt-4 text-center text-nowrap disabled:opacity-50`}
                   onClick={() => handlePayment(formData)}
                   disabled={loading}
                 >
