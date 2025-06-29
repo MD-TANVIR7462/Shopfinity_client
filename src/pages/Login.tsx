@@ -97,12 +97,10 @@ const Login = () => {
 
   return (
     <>
-      <ScrollToTop />
       <div className="main-container flex justify-center items-center min-h-screen">
         <div
           className="shadow-lg pb-8 w-11/12 md:6/12 lg:w-5/12"
-          data-aos="zoom-in"
-          data-aos-duration="2000"
+       
         >
           <div className="shadow py-3">
             <h3 className="text-custom-black text-xl font-bold ml-8">
@@ -138,7 +136,7 @@ const Login = () => {
                   >
                     Password
                   </label>
-                  <p className="text-sm cursor-pointer text-orange-400">
+                  <p className="text-sm cursor-pointer text-green-600">
                     Forgot Password?
                   </p>
                 </div>
@@ -177,7 +175,7 @@ const Login = () => {
             {/* Buttons for demo login */}
             <div className="flex flex-col gap-y-4 mt-5 lg:flex-row lg:space-x-4 lg:justify-between">
               <button
-                className="w-full py-2 border border-orange-400 flex justify-center space-x-4 items-center hover:cursor-pointer hover:bg-orange-400 text-offgray hover:text-white rounded"
+                className="w-full py-2 border border-green-400 flex justify-center space-x-4 items-center hover:cursor-pointer hover:bg-green-400 text-offgray hover:text-white rounded"
                 onClick={() => handleFillCredentials('customer')}
               >
                 <span className="text-sm">
@@ -186,7 +184,7 @@ const Login = () => {
                 <span className="ml-2 text-sm">Customer</span>
               </button>
               <button
-                className="w-full py-2 border border-orange-400 flex justify-center space-x-4 items-center hover:cursor-pointer hover:bg-orange-400 text-offgray hover:text-white rounded"
+                className="w-full py-2 border border-green-400 flex justify-center space-x-4 items-center hover:cursor-pointer hover:bg-green-400 text-offgray hover:text-white rounded"
                 onClick={() => handleFillCredentials('vendor')}
               >
                 <span className="text-sm">
@@ -195,7 +193,7 @@ const Login = () => {
                 <span className="ml-2 text-sm">Vendor</span>
               </button>
               <button
-                className="w-full py-2 border border-orange-400 flex justify-center space-x-4 items-center hover:cursor-pointer hover:bg-orange-400 text-offgray hover:text-white rounded"
+                className="w-full py-2 border border-green-400 flex justify-center space-x-4 items-center hover:cursor-pointer hover:bg-green-400 text-offgray hover:text-white rounded"
                 onClick={() => handleFillCredentials('admin')}
               >
                 <span className="text-sm">
@@ -209,7 +207,7 @@ const Login = () => {
             <div className="flex items-center justify-between mt-12">
               <p className="text-sm text-offgray">Not Registered Yet?</p>
               <Link to="/signup">
-                <span className="text-sm hover:text-orange-400 hover:transition-all duration-300 underline text-offgray">
+                <span className="text-sm hover:text-green-400 hover:transition-all duration-300 underline text-offgray">
                   Go to Signup
                 </span>
               </Link>

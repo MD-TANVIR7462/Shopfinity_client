@@ -14,46 +14,25 @@ import truckImg from '../assets/images/support/Truck.png';
 import user from '../assets/images/support/User.png';
 
 const supportOptions = [
-  {
-    id: 1,
-    img: truckImg,
-    title: 'Track Order',
-  },
-  {
-    id: 2,
-    img: creditCard,
-    title: 'Payment Options',
-  },
-  {
-    id: 3,
-    img: lockopen,
-    title: 'Return Policy',
-  },
-  {
-    id: 4,
-    img: notepad,
-    title: 'Warranty',
-  },
-  {
-    id: 5,
-    img: stack,
-    title: 'FAQs',
-  },
-  {
-    id: 6,
-    img: storefront,
-    title: 'Store Locator',
-  },
-  {
-    id: 7,
-    img: user,
-    title: 'My Account',
-  },
-  {
-    id: 8,
-    img: creditCard,
-    title: 'My Account',
-  },
+  { id: 1, img: truckImg, title: 'Track Order' },
+  { id: 2, img: creditCard, title: 'Payment Options' },
+  { id: 3, img: lockopen, title: 'Return Policy' },
+  { id: 4, img: notepad, title: 'Warranty' },
+  { id: 5, img: stack, title: 'FAQs' },
+  { id: 6, img: storefront, title: 'Store Locator' },
+  { id: 7, img: user, title: 'My Account' },
+  { id: 8, img: creditCard, title: 'Billing Info' },
+];
+
+const popularTopics = [
+  'Track My Package',
+  'Cancel My Order',
+  'Change Shipping Address',
+  'Payment Failed',
+  'How to Use Coupons',
+  'Refund Status',
+  'Account Login Issues',
+  'Membership Benefits',
 ];
 
 const Support = () => {
@@ -61,7 +40,7 @@ const Support = () => {
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast.error('This feature is not avilable yet!', {
+    toast.error('This feature is not available yet!', {
       position: 'top-right',
       duration: 1500,
       icon: '🚧',
@@ -72,163 +51,123 @@ const Support = () => {
   return (
     <div className="mt-6 lg:mt-14">
       <ScrollToTop />
-      {/* header Section */}
-      <div className="border-b border-gray-200 pb-8">
-        <div className="main-container">
-          <div className="grid grid-cols-1 md:grid-cols-12">
-            <div
-              className="col-span-12 md:col-span-6"
-              data-aos="fade-down"
-              data-aos-duration="1500"
-            >
-              <button className="bg-deep-yellow py-2 px-4 lg:px-4 rounded-sm text-custom-black font-medium text-sm mt-8 md:mt-0">
-                Help Center
-              </button>
-              <h3 className="text-custom-black font-semibold text-2xl lg:text-3xl mt-2 lg:mt-5">
-                How we can help you?
-              </h3>
-              <form className="relative mt-5" onSubmit={handleSearch}>
-                <input
-                  type="text"
-                  className="py-4 lg:py-6 px-2 lg:px-3 rounded-sm w-full lg:w-9/12 border border-gray-200 focus:outline-none text-custom-black relative"
-                  placeholder="Enter your question or keyword"
-                  required
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-                <button
-                  type="submit"
-                  className="bg-orange text-white absolute py-2 lg:py-3 px-2 lg:px-3 font-medium top-2 lg:top-3 right-2 lg:right-44 shadow-none min-w-20 lg:min-w-28 rounded-sm"
-                >
-                  Search
-                </button>
-              </form>
-            </div>
-            <div
-              className="col-span-12 md:col-span-6 order-first md:order-last"
-              data-aos="fade-down"
-              data-aos-duration="1500"
-            >
-              <img
-                src={supportImage}
-                alt="support"
-                className="w-full h-52 object-contain"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* support category section */}
-      <div className=" mt-8 lg:mt-20">
-        <div className="main-container">
-          <h3
-            className="text-custom-black font-semibold text-2xl lg:text-3xl mt-5 text-center"
-            data-aos="fade-down"
-            data-aos-duration="1500"
-          >
-            What can we assist you with today?
-          </h3>
-          <div className="mt-5 lg:mt-10 grid grid-cols-12 md:grid-cols-12 gap-x-6 gap-y-8">
-            {supportOptions.map(
-              (option: { id: number; img: string; title: string }) => (
-                <div
-                  key={option.id}
-                  className="col-span-12 md:col-span-4 lg:col-span-3 border border-orange-200 p-5 lg:p-6 rounded-md"
-                  data-aos="fade-down"
-                  data-aos-duration="1500"
-                >
-                  <div className="flex justify-start items-center space-x-3">
-                    <img
-                      src={option.img}
-                      alt={option.title}
-                      className="w-6 h-6 object-contain"
-                    />
-                    <p className="text-custom-black font-semibold">
-                      {option.title}
-                    </p>
-                  </div>
-                </div>
-              )
-            )}
-          </div>
-        </div>
-      </div>
-      {/* contact us section */}
-      <div className="mt-8 lg:mt-20 py-10 lg:py-20 bg-offwhite">
-        <div className="main-container">
-          <div
-            className="text-center"
-            data-aos="fade-down"
-            data-aos-duration="1500"
-          >
-            <button className="bg-deep-bluish text-white py-2 px-4 lg:px-4 rounded-sm font-medium text-sm">
-              Contact Us
+
+      {/* Hero Section */}
+      <div className="border-b border-gray-200 pb-10 bg-gradient-to-br from-green-50 to-white">
+        <div className="main-container grid grid-cols-1 md:grid-cols-12 items-center gap-10">
+          <div className="md:col-span-6">
+            <button className="bg-deep-yellow py-2 px-5 rounded text-sm font-semibold text-custom-black mb-3">
+              Help Center
             </button>
-            <h3 className="text-custom-black font-semibold text-2xl lg:text-3xl mt-3 text-center">
-              Didn't find your answer. <br />
-              Contact with us
-            </h3>
+            <h1 className="text-3xl lg:text-4xl font-bold text-custom-black mb-4">
+              How can we help you today?
+            </h1>
+            <form onSubmit={handleSearch} className="relative max-w-xl">
+              <input
+                type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Search support topics..."
+                className="w-full px-4 py-4 rounded border border-gray-300 shadow-sm focus:ring-2 focus:ring-orange outline-none"
+              />
+              <button
+                type="submit"
+                className="absolute top-2 right-2 bg-orange text-white px-5 py-2 rounded font-medium"
+              >
+                Search
+              </button>
+            </form>
           </div>
-          {/* cards */}
-          <div className="grid grid-cols-1 md:grid-cols-12 mt-5 lg:mt-10 md:space-x-6 space-y-4 md:space-y-0 lg:px-32">
-            {/* call */}
+          <div className="md:col-span-6">
+            <img src={supportImage} alt="Support" className="w-full h-auto" />
+          </div>
+        </div>
+      </div>
+
+      {/* Popular Topics */}
+      <div className="main-container mt-16">
+        <h2 className="text-2xl font-bold text-custom-black mb-6 text-center">
+          Popular Help Topics
+        </h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
+          {popularTopics.map((topic, i) => (
             <div
-              className="bg-white p-8 rounded-sm col-span-12 md:col-span-6 grid grid-cols-12 justify-items-start gap-x-4"
-              data-aos="fade-down"
-              data-aos-duration="1500"
+              key={i}
+              className="bg-white border hover:shadow-lg p-4 rounded text-center text-sm text-gray-700 font-medium cursor-pointer transition"
             >
-              <div className="col-span-12 md:col-span-3">
-                <div className="bg-[rgba(45,165,243,.3)] p-3 lg:p-6 flex justify-start items-center rounded mb-4 md:mb-0">
-                  <img
-                    src={callus}
-                    alt="call"
-                    className="w-10 h-10 object-contain"
-                  />
-                </div>
+              {topic}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Support Categories */}
+      <div className="main-container mt-20">
+        <h2 className="text-2xl font-bold text-custom-black mb-6 text-center">
+          What can we assist you with?
+        </h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {supportOptions.map(({ id, img, title }) => (
+            <div
+              key={id}
+              className="bg-white border border-orange-200 p-6 rounded-md hover:shadow-md transition"
+            >
+              <div className="flex items-center space-x-4">
+                <img src={img} alt={title} className="w-8 h-8" />
+                <p className="text-custom-black font-semibold">{title}</p>
               </div>
-              <div className="col-span-12 md:col-span-9">
-                <h5 className="text-custom-black font-semibold text-lg mb-2">
-                  Call Us Now
-                </h5>
-                <p className="text-pure-gray text-sm ">
-                  we are available online from 9:00 AM to 5:00 PM (GMT +6hrs)
-                  Talk with use now
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Contact Cards Section */}
+      <div className="mt-20 py-20 bg-offwhite">
+        <div className="main-container text-center">
+          <button className="bg-deep-bluish text-white py-2 px-5 rounded font-medium text-sm">
+            Contact Us
+          </button>
+          <h2 className="text-3xl font-bold text-custom-black mt-4">
+            Didn't find what you're looking for?
+          </h2>
+          <p className="text-gray-600 mt-2">
+            Our support team is here to help you 24/7
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-8 mt-12">
+            {/* Call Card */}
+            <div className="bg-white p-8 rounded shadow-md flex items-start gap-4">
+              <div className="bg-blue-100 p-4 rounded">
+                <img src={callus} alt="Call us" className="w-10 h-10" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-lg text-custom-black">Call Us</h3>
+                <p className="text-sm text-gray-600">
+                  Available 9:00 AM to 5:00 PM (GMT +6)
                 </p>
-                <h6 className="text-gray-500 font-semibold mt-4">
+                <p className="text-gray-700 font-semibold mt-2">
                   +880-1998-863753
-                </h6>
-                <button className="bg-[rgba(45,165,243,1)] text-white py-1.5 md:py-2 lg:py-3 px-2 lg:px-8 rounded font-medium mt-6 flex items-center gap-x-1 md:gap-x-2">
+                </p>
+                <button className="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded flex items-center gap-2">
                   Call Now <FaArrowRightLong />
                 </button>
               </div>
             </div>
-            {/* chat */}
-            <div
-              className="bg-white p-8 rounded-sm col-span-12 md:col-span-6 grid grid-cols-12 justify-items-start gap-x-4"
-              data-aos="fade-down"
-              data-aos-duration="1500"
-            >
-              <div className="col-span-12 md:col-span-3">
-                <div className="bg-[rgba(45,178,36,.3)] p-3 lg:p-6 flex justify-start items-center rounded mb-4 md:mb-0">
-                  <img
-                    src={emailus}
-                    alt="call"
-                    className="w-10 h-10 object-contain"
-                  />
-                </div>
+
+            {/* Chat Card */}
+            <div className="bg-white p-8 rounded shadow-md flex items-start gap-4">
+              <div className="bg-green-100 p-4 rounded">
+                <img src={emailus} alt="Email us" className="w-10 h-10" />
               </div>
-              <div className="col-span-12 md:col-span-9">
-                <h5 className="text-custom-black font-semibold text-lg mb-2">
-                  Chat With Us
-                </h5>
-                <p className="text-pure-gray text-sm ">
-                  we are available online from 9:00 AM to 5:00 PM (GMT +6hrs)
-                  Talk with use now
+              <div>
+                <h3 className="font-semibold text-lg text-custom-black">Chat With Us</h3>
+                <p className="text-sm text-gray-600">
+                  We're online and ready to assist!
                 </p>
-                <h6 className="text-gray-500 font-semibold mt-4">
-                  babulakterfsd@gmail.com
-                </h6>
-                <button className="bg-[rgba(45,178,36,1)] text-white py-1.5 md:py-2 lg:py-3 px-2 lg:px-8 rounded font-medium mt-6 flex items-center gap-x-1 md:gap-x-2">
+                <p className="text-gray-700 font-semibold mt-2">
+                  mdtanvir7462@gmail.com
+                </p>
+                <button className="mt-4 bg-green-600 hover:bg-green-700 text-white py-2 px-6 rounded flex items-center gap-2">
                   Contact Us <FaArrowRightLong />
                 </button>
               </div>

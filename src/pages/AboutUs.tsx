@@ -14,15 +14,14 @@ const AboutUs = () => {
 
   return (
     <div className="md:mt-8 lg:mt-14">
-      <ScrollToTop />
+
       {/* About Us Header */}
       <div className="md:border-b border-gray-200 md:pb-8 lg:pb-12">
         <div className="main-container">
           <div className="grid grid-cols-1 md:grid-cols-12 md:gap-x-6 gap-y-6 md:gap-y-0">
             <div
               className="col-span-12 md:col-span-6"
-              data-aos="fade-down"
-              data-aos-duration="1500"
+         
             >
               <button className="bg-deep-bluish text-white py-2 px-4 lg:px-4 rounded-sm font-medium text-sm mt-8 md:mt-0">
                 Who We Are
@@ -81,8 +80,7 @@ const AboutUs = () => {
             </div>
             <div
               className="col-span-12 md:col-span-6"
-              data-aos="fade-down"
-              data-aos-duration="1500"
+         
             >
               <img
                 src={aboutusImg}
@@ -98,8 +96,7 @@ const AboutUs = () => {
       {/* About banner */}
       <div
         className="mt-8 lg:mt-20 hidden lg:block"
-        data-aos="fade-down"
-        data-aos-duration="1500"
+     
       >
         <div className={`${Styles.bannerbg} py-6 h-72`}>
           <div className="main-container">

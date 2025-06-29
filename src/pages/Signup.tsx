@@ -110,8 +110,7 @@ const Signup = () => {
       <div className="main-container flex justify-center items-center min-h-screen">
         <div
           className="shadow-lg pb-8 w-11/12 md:6/12 lg:w-5/12"
-          data-aos="zoom-in"
-          data-aos-duration="1500"
+       
         >
           <div className="shadow py-3">
             <h3 className="text-custom-black text-xl font-bold ml-8">

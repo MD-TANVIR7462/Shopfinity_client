@@ -27,19 +27,6 @@ function App() {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <RouterProvider router={router} />
-        {!windowHeight && (
-          <button type="button" className="scrollToDown cursor-default" />
-        )}
-        {/* scroll to top */}
-        {windowHeight && (
-          <button
-            type="button"
-            onClick={() => {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            className="scrollToTop"
-          />
-        )}
       </PersistGate>
       <Toaster />
     </Provider>

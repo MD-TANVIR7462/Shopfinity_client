@@ -498,7 +498,7 @@ const Shop = () => {
             </div>
             {/* banner ad */}
             <div
-              className={`border-2 border-orange-300 px-2 py-8 w-4/5 hidden  flex-col justify-center items-center md:col-span-12 ${
+              className={`border-2 border-green-300 px-2 py-8 w-4/5 hidden  flex-col justify-center items-center md:col-span-12 ${
                 products?.length < 12 ? '' : 'lg:flex'
               }`}
             >
@@ -512,14 +512,14 @@ const Shop = () => {
               </h4>
               <div className="flex space-x-3 justify-center items-center">
                 <span className="text-sm">Only for</span>
-                <button className="bg-yellow text-custom-black font-semibold text-center text-sm px-3 py-0.5">
+                <button className="bg-[#65ac3b] text-custom-black font-semibold text-center text-sm px-3 py-0.5">
                   $299
                 </button>
               </div>
               <p className="text-custom-black font-bold text-center my-8">
                 Heavy On Features <br /> Light On Price
               </p>
-              <button className="bg-yellow py-2 px-8 font-semibold text-center text-custom-black flex items-center space-x-2">
+              <button className="bg-[#65ac3b] py-2 px-8 font-semibold text-center text-custom-black flex items-center space-x-2">
                 <span>Shop Now</span> <FaArrowRight />
               </button>
             </div>

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import androidapp from '../../assets/images/download-android.png';
 import appleapp from '../../assets/images/download-apple.png';
-import logo from '../../assets/images/logo.png';
+import logo from '../../assets/images/logo-white.png';
 
 const Footer = () => {
   return (
@@ -13,7 +13,7 @@ const Footer = () => {
             <img
               src={logo}
               alt="Shopfinity"
-              className="w-6 lg:w-8 h-6 lg:h-8 object-cover"
+              className="w-6 lg:w-8 h-6 lg:h-8 object-cover "
             />
             <span className="font-bold text-base lg:text-xl">Shopfinity</span>
           </Link>
@@ -37,37 +37,37 @@ const Footer = () => {
           <div className="links flex flex-col gap-y-3">
             <Link
               to="/shop"
-              className="text-offgray font-semibold text-sm hover:text-yellow-200 hover:pl-1 hover:transition-all duration-300"
+              className="text-offgray font-medium text-sm hover:text-green-400 hover:pl-1 hover:transition-all duration-300"
             >
               Desktop
             </Link>
             <Link
               to="/shop"
-              className="text-offgray font-semibold text-sm hover:text-yellow-200 hover:pl-1 hover:transition-all duration-300"
+              className="text-offgray font-medium text-sm hover:text-green-400 hover:pl-1 hover:transition-all duration-300"
             >
               Laptop
             </Link>
             <Link
               to="/shop"
-              className="text-offgray font-semibold text-sm hover:text-yellow-200 hover:pl-1 hover:transition-all duration-300"
+              className="text-offgray font-medium text-sm hover:text-green-400 hover:pl-1 hover:transition-all duration-300"
             >
               SmartPhone
             </Link>
             <Link
               to="/shop"
-              className="text-offgray font-semibold text-sm hover:text-yellow-200 hover:pl-1 hover:transition-all duration-300"
+              className="text-offgray font-medium text-sm hover:text-green-400 hover:pl-1 hover:transition-all duration-300"
             >
               Fashion
             </Link>
             <Link
               to="/shop"
-              className="text-offgray font-semibold text-sm hover:text-yellow-200 hover:pl-1 hover:transition-all duration-300"
+              className="text-offgray font-medium text-sm hover:text-green-400 hover:pl-1 hover:transition-all duration-300"
             >
               Accessories
             </Link>
             <Link
               to="/shop"
-              className="text-yellow-200 font-semibold text-sm hover:text-[#77878F] hover:pl-1 hover:transition-all duration-300"
+              className="text-green-400 font-medium text-sm hover:text-[#77878F] hover:pl-1 hover:transition-all duration-300"
             >
               All Categories <span>&rarr;</span>
             </Link>
@@ -75,43 +75,43 @@ const Footer = () => {
         </div>
         {/* quick links */}
         <div className="col-sapn-12 lg:col-span-3 -ml-5 md:-ml-20 lg:ml-0">
-          <p className="uppercase font-semibold mb-4 text-sm lg:text-base">
+          <p className="uppercase font-medium mb-4 text-sm lg:text-base">
             quick links
           </p>
           <div className="links flex flex-col gap-y-3">
             <Link
               to="/"
-              className="text-offgray font-semibold text-sm hover:text-yellow-200 hover:pl-1 hover:transition-all duration-300"
+              className="text-offgray font-medium text-sm hover:text-green-400 hover:pl-1 hover:transition-all duration-300"
             >
               Home
             </Link>
             <Link
               to="/login"
-              className="text-offgray font-semibold text-sm hover:text-yellow-200 hover:pl-1 hover:transition-all duration-300"
+              className="text-offgray font-medium text-sm hover:text-green-400 hover:pl-1 hover:transition-all duration-300"
             >
               Sign In
             </Link>
             <Link
               to="/shop"
-              className="text-offgray font-semibold text-sm hover:text-yellow-200 hover:pl-1 hover:transition-all duration-300"
+              className="text-offgray font-medium text-sm hover:text-green-400 hover:pl-1 hover:transition-all duration-300"
             >
               Shop Now
             </Link>
             <Link
               to="/about-us"
-              className="text-offgray font-semibold text-sm hover:text-yellow-200 hover:pl-1 hover:transition-all duration-300"
+              className="text-offgray font-medium text-sm hover:text-green-400 hover:pl-1 hover:transition-all duration-300"
             >
               About Us
             </Link>
             <Link
               to="/faq"
-              className="text-offgray font-semibold text-sm hover:text-yellow-200 hover:pl-1 hover:transition-all duration-300"
+              className="text-offgray font-medium text-sm hover:text-green-400 hover:pl-1 hover:transition-all duration-300"
             >
               FAQ
             </Link>
             <Link
               to="/support"
-              className="text-offgray font-semibold text-sm hover:text-yellow-200 hover:pl-1 hover:transition-all duration-300"
+              className="text-offgray font-medium text-sm hover:text-green-400 hover:pl-1 hover:transition-all duration-300"
             >
               Support
             </Link>
@@ -119,7 +119,7 @@ const Footer = () => {
         </div>
         {/* downlaod */}
         <div className="col-sapn-12 lg:col-span-3">
-          <p className="uppercase font-semibold mb-4 text-sm lg:text-base">
+          <p className="uppercase font-medium mb-4 text-sm lg:text-base">
             download app
           </p>
           <div className="links flex flex-col gap-y-3">
@@ -153,11 +153,11 @@ const Footer = () => {
           <a
             href="https://tanvir3.vercel.app/"
             target="_blank"
-            className="hover:text-orange-400"
+            className="hover:text-green-500"
           >
-            Tajul Islam Tanvir
+         Tanvir
           </a>
-          &trade;
+    
         </p>
       </div>
     </div>
