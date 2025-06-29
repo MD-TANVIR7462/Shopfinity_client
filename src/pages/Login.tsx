@@ -107,7 +107,7 @@ const Login = () => {
               Sign In
             </h3>
           </div>
-          <div className="h-[2px] w-3/5 mb-6 bg-orange"></div>
+          <div className="h-[2px] w-full mb-6 bg-orange"></div>
           <div className="px-8">
             <form
               className="space-y-4 md:space-y-6"
