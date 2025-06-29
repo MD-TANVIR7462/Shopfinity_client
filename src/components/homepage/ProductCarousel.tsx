@@ -21,8 +21,7 @@ const Carousel = () => {
       {/* carousel */}
       <div
         className="swipercontainer col-span-12 lg:col-span-8  main-container"
-        data-aos="fade-down"
-        data-aos-duration="1500"
+     
       >
         <Swiper
           scrollbar
@@ -82,8 +81,7 @@ const Carousel = () => {
       <div className="col-span-12 lg:col-span-4 flex flex-col md:flex-row lg:flex-col gap-y-4 gap-x-4">
         <div
           className="product-1 bg-custom-black rounded-md flex space-x-1 px-3 py-5"
-          data-aos="fade-down"
-          data-aos-duration="1500"
+         
         >
           <div className="col-span-6 mt-4 lg:mt-9">
             <h4 className="text-yellow font-semibold mb-1 text-sm">
@@ -113,8 +111,7 @@ const Carousel = () => {
         {/* banner  for product 2*/}
         <div
           className="product-2 bg-offwhite rounded-md flex space-x-8 px-3 py-5 md:w-3/5 lg:w-full"
-          data-aos="fade-down"
-          data-aos-duration="1500"
+         
         >
           <div className="col-span-6">
             <img

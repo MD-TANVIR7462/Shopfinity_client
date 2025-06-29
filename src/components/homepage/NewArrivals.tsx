@@ -168,7 +168,7 @@ const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
         </div>
         {/* big product */}
         <div
-          className="col-span-12 md:hidden lg:block lg:col-span-2 border border-gray-100 py-4 lg:bg-yellow-300 px-10 lg:px-3 rounded"
+          className="col-span-12 md:hidden lg:block lg:col-span-2 border border-gray-100 py-4 lg:bg-gray-300/20 px-10 lg:px-3 rounded"
           data-aos="fade-down"
           data-aos-duration="1500"
         >

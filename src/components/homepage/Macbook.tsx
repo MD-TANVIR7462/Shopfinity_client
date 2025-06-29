@@ -22,9 +22,8 @@ const Macbook = () => {
   const navigate = useNavigate();
   return (
     <div
-      className="mt-14 lg:mt-20 bg-[#FFE7D6] p-6 pt-8 pb-0 md:py-8 lg:pt-2 lg:pb-1 lg:px-16 flex flex-col md:flex-row justify-between items-center space-y-4 rounded-md"
-      data-aos="zoom-in"
-      data-aos-duration="1500"
+      className="mt-14 lg:mt-20 bg-offwhite p-6 pt-8 pb-0 md:py-8 lg:pt-2 lg:pb-1 lg:px-16 flex flex-col md:flex-row justify-between items-center space-y-4 rounded-md"
+  
     >
       {/* description */}
       <div>

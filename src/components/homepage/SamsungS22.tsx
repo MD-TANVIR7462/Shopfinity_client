@@ -22,9 +22,8 @@ const SamsungS22 = () => {
   const navigate = useNavigate();
   return (
     <div
-      className="mt-14 lg:mt-20 bg-[#FFE7D6] p-6 pb-0 lg:px-16 lg:pt-12 lg:pb-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 space-y-4 rounded-md md:items-center lg:items-start"
-      data-aos="zoom-in"
-      data-aos-duration="1500"
+      className="mt-14 lg:mt-20 bg-offwhite p-6 pb-0 lg:px-16 lg:pt-12 lg:pb-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 space-y-4 rounded-md md:items-center lg:items-start"
+
     >
       {/* image */}
       <div className="cols-span-12 lg:col-span-6">
