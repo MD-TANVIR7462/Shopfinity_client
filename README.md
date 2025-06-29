@@ -22,10 +22,6 @@
 - then, build the project using `yarn run build` command.
 - at last, run the project using `yarn run dev` command.
 
-### live link
-
-- client: https://gizmobuy.vercel.app
-- server: https://gizmobuy-backend.vercel.app
 
 ### DEMO LOGIN DETAILS
 
