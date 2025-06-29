@@ -689,7 +689,7 @@ const Shop = () => {
                           </div>
                           <h5 className="mt-1 mb-1 font-semibold text-sm">{`${product?.title}`}</h5>
                         </div>
-                        <p className="text-bluish text-md">{`$${product?.price}`}</p>
+                        <p className="text-[#528b30] text-md">{`$${product?.price}`}</p>
                       </div>
                     </div>
                   );

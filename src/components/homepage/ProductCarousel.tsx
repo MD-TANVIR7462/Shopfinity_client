@@ -44,7 +44,7 @@ const Carousel = () => {
             >
               {/*product description*/}
               <div className="cols-span-12 lg:col-span-6 order-last lg:order-1">
-                <h4 className="text-bluish font-semibold mb-1 text-sm">{`- ${product?.intro}`}</h4>
+                <h4 className="text-[#528b30] font-semibold mb-1 text-sm">{`- ${product?.intro}`}</h4>
                 <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4 text-custom-black">
                   {product?.title}
                 </h2>

@@ -157,7 +157,7 @@ const CustomerDashboard = () => {
                   className="flex items-center space-x-2"
                   onClick={() => setIsSidebarOpen(!isSidebarOpen)}
                 >
-                  <TbShoppingBagEdit className="text-xl text-bluish" />
+                  <TbShoppingBagEdit className="text-xl text-[#528b30]" />
                   <span>My Orders</span>
                 </div>
               </Link>

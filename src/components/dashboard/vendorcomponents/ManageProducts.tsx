@@ -216,7 +216,7 @@ const VendorManageProducts = () => {
                               target="_blank"
                             >
                               <button
-                                className="text-lg text-bluish"
+                                className="text-lg text-[#528b30]"
                                 title="view product"
                               >
                                 <IoEyeOutline />

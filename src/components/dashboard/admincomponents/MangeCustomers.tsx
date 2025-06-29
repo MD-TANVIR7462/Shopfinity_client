@@ -163,7 +163,7 @@ const ManageCustomers = () => {
                           <td className="px-6 py-6">{`$${customer?.totalPaid}`}</td>
                           <td className="ml-5 py-6 flex space-x-4 justify-start items-center">
                             <button
-                              className="text-lg text-bluish"
+                              className="text-lg text-[#528b30]"
                               title="view profile"
                               onClick={() => viewCustomerProfile(customer._id)}
                             >

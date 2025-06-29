@@ -188,7 +188,7 @@ const AdminDashboard = () => {
                   className="flex items-center space-x-2"
                   onClick={() => setIsSidebarOpen(!isSidebarOpen)}
                 >
-                  <FaUserTie className="text-lg text-bluish" />
+                  <FaUserTie className="text-lg text-[#528b30]" />
                   <span>Manage Customers</span>
                 </div>
               </Link>

@@ -144,7 +144,7 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
                   <h6 className="text-custom-black text-sm font-semibold">
                     {product?.title}
                   </h6>
-                  <p className="text-bluish text-sm">{`$${product?.price}`}</p>
+                  <p className="text-[#528b30] text-sm">{`$${product?.price}`}</p>
                 </div>
               </div>
             );
@@ -212,7 +212,7 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
                   <h6 className="text-custom-black text-sm font-semibold">
                     {product?.title}
                   </h6>
-                  <p className="text-bluish text-sm">{`$${product?.price}`}</p>
+                  <p className="text-[#528b30] text-sm">{`$${product?.price}`}</p>
                 </div>
               </div>
             );
@@ -280,7 +280,7 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
                   <h6 className="text-custom-black text-sm font-semibold">
                     {product?.title}
                   </h6>
-                  <p className="text-bluish text-sm">{`$${product?.price}`}</p>
+                  <p className="text-[#528b30] text-sm">{`$${product?.price}`}</p>
                 </div>
               </div>
             );
@@ -348,7 +348,7 @@ const Collections: React.FC<CollectionsProps> = ({ products }) => {
                   <h6 className="text-custom-black text-sm font-semibold">
                     {product?.title}
                   </h6>
-                  <p className="text-bluish text-sm">{`$${product?.price}`}</p>
+                  <p className="text-[#528b30] text-sm">{`$${product?.price}`}</p>
                 </div>
               </div>
             );

@@ -238,7 +238,7 @@ const ProductDetails = () => {
               </div>
             </div>
             <div className="flex items-center space-x-6 mt-6">
-              <h5 className="text-2xl font-bold text-bluish ">{`$${product?.price}`}</h5>
+              <h5 className="text-2xl font-bold text-[#528b30] ">{`$${product?.price}`}</h5>
               <button className="bg-deep-yellow py-1 px-4 rounded text-gray-700 font-semibold flex items-center gap-x-1 md:gap-x-2">
                 {`${product?.runningDiscount}%  OFF`}
               </button>

@@ -161,7 +161,7 @@ const ManageVendors = () => {
                           >{`${vendor?.isBlocked ? 'Inactive' : 'Active'}`}</td>
                           <td className="ml-5 py-6 flex space-x-4 justify-start items-center">
                             <button
-                              className="text-lg text-bluish"
+                              className="text-lg text-[#528b30]"
                               title="view profile"
                               onClick={() => viewVendorProfile(vendor._id)}
                             >

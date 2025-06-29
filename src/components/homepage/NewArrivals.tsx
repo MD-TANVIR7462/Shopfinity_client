@@ -94,8 +94,8 @@ const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
           New Arrivals
         </h2>
         <Link to="/shop" className="ml-auto">
-          <button className=" text-bluish flex items-center gap-x-1 text-sm">
-            <span className="text-bluish">Browse All Products </span>
+          <button className=" text-[#528b30] flex items-center gap-x-1 text-sm">
+            <span className="text-[#528b30]">Browse All Products </span>
             <span>
               {' '}
               <FaArrowRightLong />{' '}
@@ -161,7 +161,7 @@ const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
                   className="w-full h-40 object-contain"
                 />
                 <h5 className="mt-5 text-sm">{`${product?.title}`}</h5>
-                <p className="text-bluish font-semibold text-md">{`$${product?.price}`}</p>
+                <p className="text-[#528b30] font-semibold text-md">{`$${product?.price}`}</p>
               </div>
             );
           })}
@@ -191,7 +191,7 @@ const NewArrivals: React.FC<NewArrivalProps> = ({ products }) => {
           <h4 className="text-custom-black mb-4 text-xl">
             {newArrivalProducts[0]?.title}
           </h4>
-          <h5 className="text-bluish font-semibold text-md mt-2 mb-4">
+          <h5 className="text-[#528b30] font-semibold text-md mt-2 mb-4">
             {`$${newArrivalProducts[0]?.price}`}
           </h5>
           <h5 className="text-graish text-sm mt-2 mb-2">

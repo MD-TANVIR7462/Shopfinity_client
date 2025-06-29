@@ -362,7 +362,7 @@ const Checkout = () => {
                             ? `${product?.productTitle.slice(0, 150)}${'...'}`
                             : product?.productTitle}
                         </h5>
-                        <p className="text-bluish text-sm">
+                        <p className="text-[#528b30] text-sm">
                           {product.quantity} x ${product?.productPrice}
                         </p>
                       </div>

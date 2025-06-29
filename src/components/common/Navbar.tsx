@@ -66,7 +66,7 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      <div className="bg-bluish text-white">
+      <div className="bg-[#528b30] text-white">
         <div className="main-container">
           {/* welcome */}
           <div className="flex flex-col md:flex-row gap-y-2 justify-between items-center py-3">
@@ -82,21 +82,21 @@ const Navbar = () => {
             )}
             <div className="text-sm flex gap-x-2 items-center">
               <span className="mr-3">Follow us: </span>
-              <a href="https://facebook.com/babulakterfsd2" target="_blank">
+              <a href="#" target="_blank">
                 <IoLogoFacebook />
               </a>
-              <a href="https://linkedin.com/in/babulakterfsd" target="_blank">
+              <a href="https://www.linkedin.com/in/md-tajul-islam-tanvir-531682278/" target="_blank">
                 <FaLinkedinIn />
               </a>
-              <a href="https://github.com/babulakterfsd" target="_blank">
+              <a href="https://github.com/MD-TANVIR7462" target="_blank">
                 <IoLogoGithub />
               </a>
             </div>
           </div>
         </div>
-        <div className="h-[1px] bg-[#1488a2]"></div>
+        <div className="h-[1px] bg-[#136948]"></div>
         {/* navbar */}
-        <div className="bg-bluish py-5">
+        <div className="bg-[#528b30] py-5">
           <div className="main-container flex justify-between items-center">
             {/* logo */}
             <Link className="flex gap-x-1 lg:gap-x-2 items-center w-24" to="/">
