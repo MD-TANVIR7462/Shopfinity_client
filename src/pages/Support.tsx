@@ -50,8 +50,6 @@ const Support = () => {
 
   return (
     <div className="mt-6 lg:mt-14">
-      <ScrollToTop />
-
       {/* Hero Section */}
       <div className="border-b border-gray-200 pb-10 bg-gradient-to-br from-green-50 to-white">
         <div className="main-container grid grid-cols-1 md:grid-cols-12 items-center gap-10">
