@@ -1,237 +1,157 @@
-'use client';
+"use client";
 
-import Loader from '@/components/common/Loader';
-import CheckRoleAndLogout from '@/hooks/CheckRoleAndLogout';
-import { useGetProfileQuery } from '@/redux/api/authApi';
-import { useGetMyOrdersQuery } from '@/redux/api/orderApi';
-import { useEffect, useState } from 'react';
+import Loader from "@/components/common/Loader";
+import CheckRoleAndLogout from "@/hooks/CheckRoleAndLogout";
+import { useGetProfileQuery } from "@/redux/api/authApi";
+import { useGetMyOrdersQuery } from "@/redux/api/orderApi";
+import { useEffect, useState } from "react";
+import {
+  FaBoxOpen,
+  FaCheckCircle,
+  FaTimesCircle,
+  FaTruck,
+  FaInfoCircle,
+} from "react-icons/fa";
 
 const MyOrders = () => {
-  CheckRoleAndLogout('customer');
+  CheckRoleAndLogout("customer");
 
-  /* pagination */
-  const [page, setPage] = useState<string>('1');
-  const limit = '10';
-  const handlePageChange = (page: number) => {
-    setPage(page.toString());
-  };
+  const [page, setPage] = useState<string>("1");
+  const limit = "10";
 
-  /* query */
-  const allFilters = {
-    page: page,
-    limit: limit,
-  };
+  const queryParams = new URLSearchParams({ page, limit }).toString();
+  const handlePageChange = (newPage: number) => setPage(newPage.toString());
 
-  const createQueryString = (obj: any) => {
-    const keyValuePairs = [];
-    for (const key in obj) {
-      keyValuePairs.push(
-        encodeURIComponent(key) + '=' + encodeURIComponent(obj[key])
-      );
-    }
-    return keyValuePairs.join('&');
-  };
+  const { data: profileData, isLoading: isProfileLoading } = useGetProfileQuery(undefined);
+  const { data: orders, isLoading: isOrdersLoading } = useGetMyOrdersQuery(queryParams, {
+    refetchOnMountOrArgChange: true,
+  });
 
-  let queryParams = createQueryString(allFilters);
-
-  useEffect(() => {
-    queryParams = createQueryString({
-      page,
-      limit,
-    });
-  }, [page, limit]);
-
-  const { data: profileData, isLoading } = useGetProfileQuery(undefined);
-  const userProfileFromDb = profileData?.data;
-
-  const { data: orders, isLoading: isMyOrdersLoading } = useGetMyOrdersQuery(
-    queryParams,
-    {
-      refetchOnMountOrArgChange: true,
-    }
-  );
-
-  const allOrders = orders?.data?.data;
-
+  const user = profileData?.data;
+  const allOrders = orders?.data?.data || [];
   const totalItems = orders?.data?.meta?.total || 0;
   const totalPages = Math.ceil(Number(totalItems) / Number(limit));
 
-  if (isLoading) {
-    return <Loader />;
-  }
+  const loading = isProfileLoading || isOrdersLoading;
+  if (loading) return <Loader />;
 
   return (
-    <div>
-      <h3 className="text-center mt-10 lg:mt-14 text-2xl">My Orders</h3>
-      <p className="text-center lg:mt-2 md:text-md lg:w-2/3 lg:mx-auto">
-        Welcome, {userProfileFromDb?.name}! Here you can see all your orders
-        with all the details you might need to see. If you have any questions,
-        please contact us. We are happy to help you.
-      </p>
-      {/* order list table */}
-      <div className="lg:w-11/12 lg:mx-auto">
-        <div className="mb-10 lg:mb-24 lg:mt-10 lg:shadow-md lg:rounded-md lg:py-5 lg:px-6 lg:pb-8">
-          <div className="mt-0">
-            <div className="relative overflow-x-auto">
-              <table className="w-full text-sm text-left rtl:text-right text-gray-500">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
-                  <tr>
-                    <th scope="col" className="px-6 py-3">
-                      Order ID
-                    </th>
-                    <th scope="col" className="px-6 py-3">
-                      Products
-                    </th>
-                    <th scope="col" className="px-6 py-3">
-                      Order Date
-                    </th>
-                    <th scope="col" className="px-6 py-3">
-                      Payment Status
-                    </th>
-                    <th scope="col" className="px-6 py-3">
-                      Total Bill
-                    </th>
-                    <th scope="col" className="px-6 py-3">
-                      Order Status
-                    </th>
-                  </tr>
-                </thead>
+    <div className="min-h-screen py-12 px-4 lg:px-10 bg-gradient-to-br from-white to-gray-100 max-w-[1600px] mx-auto">
+      <div className="text-center mb-10">
+        <h2 className="text-4xl font-bold text-indigo-700">My Orders</h2>
+        <p className="text-gray-600 mt-1">
+          Welcome, <span className="font-semibold text-indigo-600">{user?.name}</span> — Here's a breakdown of your recent purchases.
+        </p>
+      </div>
 
-                <tbody>
-                  {
-                    // if orders are loading
-                    isMyOrdersLoading ? (
-                      <div className="mx-auto my-6">
-                        <div className="flex justify-center items-center">
-                          <div className="flex justify-center items-center">
-                            <div className="animate-spin rounded-full size-12 border-b-2 border-red-500"></div>
-                          </div>
-                        </div>
-                      </div>
-                    ) : null
-                  }
-                  {!isMyOrdersLoading && allOrders?.length === 0 ? (
-                    <tr>
-                      <td className="text-red-400 font-semibold whitespace-nowrap py-8 pl-12">
-                        No Order Found
-                      </td>
-                    </tr>
-                  ) : null}
-                  {!isMyOrdersLoading && allOrders?.length > 0
-                    ? allOrders?.map((order: any) => (
-                        <tr
-                          className="bg-white border-b hover:bg-orange-50"
-                          key={order?.orderId}
+      {allOrders.length === 0 ? (
+        <p className="text-center text-red-600 font-semibold text-lg">No orders found.</p>
+      ) : (
+        <div className="overflow-x-auto bg-white rounded-xl shadow-lg">
+          <table className="min-w-full divide-y divide-gray-200 text-sm text-gray-700">
+            <thead className="bg-indigo-50">
+              <tr>
+                <th className="px-6 py-4 text-left font-semibold uppercase">Order ID</th>
+                <th className="px-6 py-4 text-left font-semibold uppercase">Date</th>
+                <th className="px-6 py-4 text-left font-semibold uppercase"># of Items</th>
+                <th className="px-6 py-4 text-left font-semibold uppercase">Products</th>
+                <th className="px-6 py-4 text-left font-semibold uppercase">Payment</th>
+                <th className="px-6 py-4 text-left font-semibold uppercase">Shipping</th>
+                <th className="px-6 py-4 text-left font-semibold uppercase">Total</th>
+                <th className="px-6 py-4 text-left font-semibold uppercase">Status</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100 bg-white">
+              {allOrders.map((order: any) => (
+                <tr key={order.orderId} className="hover:bg-gray-50 transition">
+                  <td className="px-6 py-4 font-medium text-indigo-700">{order.orderId}</td>
+                  <td className="px-6 py-4">{order.createdAt.slice(0, 10)}</td>
+                  <td className="px-6 py-4">{order.products.length}</td>
+                  <td className="px-6 py-4">
+                    <div className="flex flex-wrap gap-2">
+                      {order.products.map((product: any) => (
+                        <span
+                          key={product.productId}
+                          className="bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-full text-xs font-medium"
                         >
-                          <th
-                            scope="row"
-                            className="px-6 py-6 font-medium text-gray-700 whitespace-nowrap"
-                          >
-                            {order?.orderId}
-                          </th>
-                          <td className="px-6 py-6">
-                            {order?.products.map((product: any) => (
-                              <div
-                                key={product?.productId}
-                                className="flex items-center"
-                              >
-                                <p className="ml-2 border px-1 py-0.5 text-center text-sm rounded mt-1">
-                                  {product?.title}
-                                </p>
-                              </div>
-                            ))}
-                          </td>
-                          <td className="px-6 py-6">{`${order?.createdAt.slice(
-                            0,
-                            10
-                          )}`}</td>
-                          <td
-                            className={`px-6 py-6 ${
-                              order?.isPaid
-                                ? 'text-green-400 text-sm'
-                                : 'text-red-400'
-                            }`}
-                          >
-                            {order?.isPaid ? 'paid' : 'unpaid'}
-                          </td>
-                          <td
-                            className={`px-6 py-6 ${
-                              order?.isPaid ? '' : 'text-red-400'
-                            }`}
-                          >{`$${order?.totalBill}`}</td>
-                          <td
-                            className={`px-6 py-6 text-sm ${
-                              order.orderStatus === 'processing'
-                                ? 'text-red-400'
-                                : order?.orderStatus === 'delivered'
-                                ? 'text-green-400'
-                                : ''
-                            }`}
-                          >
-                            {`${
-                              order?.orderStatus === 'processing'
-                                ? 'processing'
-                                : 'completed'
-                            }`}
-                          </td>
-                        </tr>
-                      ))
-                    : null}
-                </tbody>
-              </table>
+                          {product.title}
+                        </span>
+                      ))}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4">
+                    {order.isPaid ? (
+                      <span className="inline-flex items-center text-green-700 font-semibold text-sm">
+                        <FaCheckCircle className="mr-1" /> Paid
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center text-red-600 font-semibold text-sm">
+                        <FaTimesCircle className="mr-1" /> Unpaid
+                      </span>
+                    )}
+                  </td>
+                  <td className="px-6 py-4">
+                    <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full text-xs font-medium">
+                      Standard
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 font-semibold text-gray-900">${order.totalBill}</td>
+                  <td className="px-6 py-4">
+                    {order.orderStatus === "processing" ? (
+                      <span className="inline-flex items-center bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full text-xs font-semibold">
+                        <FaTruck className="mr-1" /> Processing
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center bg-green-100 text-green-800 px-2 py-0.5 rounded-full text-xs font-semibold">
+                        <FaBoxOpen className="mr-1" /> Delivered
+                      </span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
 
-              {/*  pagination */}
-              {isMyOrdersLoading || allOrders?.length === 0 ? (
-                <div></div>
-              ) : (
-                <div
-                  className={`flex justify-end my-5 ${
-                    allOrders?.length < 5 ? 'mt-[200px]' : 'mt-4'
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <div className="flex justify-center mt-10 space-x-2">
+          <button
+            onClick={() => handlePageChange(Number(page) - 1)}
+            disabled={Number(page) === 1}
+            className="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300 disabled:opacity-50 transition"
+          >
+            Prev
+          </button>
+          {[...Array(Math.min(totalPages, 5)).keys()].map((index) => {
+            const pageNumber = Number(page) - 2 + index;
+            if (pageNumber > 0 && pageNumber <= totalPages) {
+              return (
+                <button
+                  key={pageNumber}
+                  onClick={() => handlePageChange(pageNumber)}
+                  className={`px-4 py-2 rounded ${
+                    Number(page) === pageNumber
+                      ? "bg-green-600 text-white"
+                      : "bg-gray-100 hover:bg-gray-200 text-gray-800"
                   }`}
                 >
-                  <button
-                    className={`px-3 py-1 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 disabled:cursor-not-allowed disabled:hover:bg-gray-200 ${
-                      allOrders?.length < 5 ? 'mr-2' : ''
-                    }`}
-                    onClick={() => handlePageChange(Number(page) - 1)}
-                    disabled={Number(page) === 1}
-                  >
-                    Prev
-                  </button>
-                  {[...Array(Math.min(totalPages, 5)).keys()].map((index) => {
-                    const pageNumber = Number(page) - 2 + index;
-                    // Check if pageNumber is within valid range and greater than 0
-                    if (pageNumber > 0 && pageNumber <= totalPages) {
-                      return (
-                        <button
-                          key={pageNumber}
-                          className={`mx-2 px-3 py-1 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 disabled:cursor-not-allowed disabled:hover:bg-gray-200 ${
-                            Number(page) === pageNumber ? 'font-bold' : ''
-                          }`}
-                          onClick={() => handlePageChange(pageNumber)}
-                          disabled={Number(page) === pageNumber}
-                        >
-                          {pageNumber}
-                        </button>
-                      );
-                    }
-                    return null; // Render nothing for invalid pageNumber
-                  })}
-                  <button
-                    className={`px-3 py-1 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 disabled:cursor-not-allowed disabled:hover:bg-gray-200 ${
-                      allOrders?.length < 12 ? 'ml-2' : ''
-                    }`}
-                    onClick={() => handlePageChange(Number(page) + 1)}
-                    disabled={Number(page) === totalPages}
-                  >
-                    Next
-                  </button>
-                </div>
-              )}
-            </div>
-          </div>
+                  {pageNumber}
+                </button>
+              );
+            }
+            return null;
+          })}
+          <button
+            onClick={() => handlePageChange(Number(page) + 1)}
+            disabled={Number(page) === totalPages}
+            className="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300 disabled:opacity-50 transition"
+          >
+            Next
+          </button>
         </div>
-      </div>
+      )}
     </div>
   );
 };

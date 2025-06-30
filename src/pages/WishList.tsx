@@ -53,7 +53,7 @@ const WishList = () => {
   }
 
   return (
-    <div className="main-container mt-24 md:mt-28 lg:px-36 space-y-8 px-4">
+    <div className="main-container mt-24 md:mt-28 lg:px-36 space-y-8 px-4 mb-12">
       {wishedProducts.length > 0 ? (
         <>
           {/* Banner */}
@@ -143,7 +143,7 @@ const WishList = () => {
           </div>
 
           {/* Info Section */}
-          <div className="bg-white rounded shadow px-6 py-4 text-sm text-gray-600 leading-relaxed">
+          <div className="bg-white rounded shadow px-6 py-4 text-sm text-gray-600 leading-relaxed ">
             <h5 className="text-custom-black font-semibold text-base mb-2">About Your Wishlist</h5>
             <p>
               Keep track of items you love. Save products for later, monitor availability, and shop when the time is

@@ -185,185 +185,158 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="main-container pb-8">
-      <h3 className="text-center mt-10 lg:mt-14 text-2xl">Add New Product</h3>
-      <p className="text-center lg:mt-2 md:text-md lg:w-2/3 lg:mx-auto">
-        Welcome, {userProfileFromDb?.name}! Here you can add a new product to
-        your store. Please fill in the details below. Make sure to provide
-        accurate information. You can always edit the product later.
-      </p>
-      {/* Add Product Form */}
-      <div className="lg:w-10/12 lg:mx-auto shadow px-4 py-4 lg:px-10 md:pt-12 md:pb-8 rounded mt-6">
-        <form onSubmit={handleAddProduct}>
-          <div className="grid gap-4 md:grid-cols-12 sm:gap-6">
-            {/* product image */}
-            <div className="col-span-12 md:col-span-6">
-              <label
-                htmlFor="productImage"
-                className="block mb-2 text-sm font-semibold"
-              >
-                Product Image
-              </label>
+  <div className="main-container pb-10 px-4 lg:px-0">
+  <h3 className="text-center mt-10 lg:mt-14 text-3xl font-semibold text-green-600">Add New Product</h3>
+  <p className="text-center mt-2 text-gray-600 max-w-2xl mx-auto">
+    Welcome, {userProfileFromDb?.name}! Please provide the necessary details below to add a new product. Ensure the information is accurate—you can always edit later.
+  </p>
 
-              <input
-                type="file"
-                name="productImage"
-                id="productImage"
-                className="text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-600  focus:outline-none"
-                required
-                onChange={(e) => {
-                  const selectedFile = e.target.files && e.target.files[0];
-                  if (selectedFile) {
-                    setProductDisplayImage(selectedFile);
-                  }
-                }}
-              />
-            </div>
-            {/* name */}
-            <div className="col-span-12 md:col-span-6">
-              <label
-                htmlFor="name"
-                className="block mb-2 text-sm font-semibold"
-              >
-                Product Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                className="text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-600  focus:outline-none"
-                placeholder="e.g. Samsung Galaxy S24 Ultra 5G"
-                minLength={3}
-                maxLength={255}
-                required
-                value={productTitle}
-                onChange={(e) => setProductTitle(e.target.value)}
-              />
-            </div>
-            {/* price */}
-            <div className="col-span-12 md:col-span-6">
-              <label
-                htmlFor="price"
-                className="block mb-2 text-sm font-semibold"
-              >
-                Price
-              </label>
+  {/* Form Container */}
+  <div className="bg-white shadow-md rounded-xl mt-10 p-6 lg:p-10 max-w-5xl mx-auto">
+    <form onSubmit={handleAddProduct}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Product Image */}
+        <div>
+          <label htmlFor="productImage" className="block text-sm font-medium text-gray-700 mb-1">
+            Product Image
+          </label>
+          <input
+            type="file"
+            id="productImage"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 bg-gray-50"
+            required
+            onChange={(e) => {
+              const selectedFile = e.target.files?.[0];
+              if (selectedFile) setProductDisplayImage(selectedFile);
+            }}
+          />
+        </div>
 
-              <input
-                type="number"
-                name="price"
-                id="price"
-                className="text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-600  focus:outline-none"
-                placeholder="e.g. 499.99"
-                required
-                value={productPrice}
-                min={1}
-                onChange={(e) => setProductPrice(Number(e.target.value))}
-              />
-            </div>
-            {/* brand */}
-            <div className="col-span-12 md:col-span-6">
-              <label
-                htmlFor="brand"
-                className="block mb-2 text-sm font-semibold"
-              >
-                Brand Name
-              </label>
-              <input
-                type="text"
-                name="brand"
-                id="brand"
-                className="text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-600  focus:outline-none"
-                placeholder="e.g. Samsung"
-                minLength={3}
-                maxLength={50}
-                required
-                value={productBrand}
-                onChange={(e) => setProductBrand(e.target.value)}
-              />
-            </div>
-            {/* release date */}
-            <div className="col-span-12 md:col-span-6">
-              <label
-                htmlFor="releaseDate"
-                className="block mb-2 text-sm font-semibold"
-              >
-                Release Date
-              </label>
+        {/* Product Name */}
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+            Product Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            value={productTitle}
+            onChange={(e) => setProductTitle(e.target.value)}
+            placeholder="e.g. iPhone 15 Pro Max"
+            minLength={3}
+            maxLength={255}
+            required
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 bg-gray-50"
+          />
+        </div>
 
-              <input
-                type="date"
-                name="releaseDate"
-                id="releaseDate"
-                className="text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-600  focus:outline-none"
-                placeholder="e.g. January 28, 2024"
-                required
-                value={productReleaseDate}
-                onChange={(e) => setProductReleaseDate(e.target.value)}
-              />
-            </div>
-            {/* category */}
-            <div className="col-span-12 md:col-span-6">
-              <label
-                htmlFor="category"
-                className="block mb-2 text-sm font-semibold"
-              >
-                Product Category
-              </label>
-              <select
-                id="category"
-                className="text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-600 focus:outline-none"
-                required
-                value={productCategory}
-                onChange={(e) => setProductCategory(e.target.value)}
-              >
-                <option value="" defaultValue="">
-                  select
-                </option>
-                <option value="desktop">Desktop</option>
-                <option value="laptop">Laptop</option>
-                <option value="smartphone">Smartphone</option>
-                <option value="watch">Watch</option>
-                <option value="headphone">Headphone</option>
-                <option value="fashion">Fashiion</option>
-                <option value="accessories">Accesories</option>
-                <option value="others">Others</option>
-              </select>
-            </div>
-            {/* description */}
-            <div className="col-span-12">
-              <label
-                htmlFor="description"
-                className="block mb-2 text-sm font-semibold"
-              >
-                Product Description
-              </label>
-              <textarea
-                name="description"
-                id="description"
-                className="text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-600 focus:outline-none"
-                placeholder="e.g. The Samsung Galaxy S24 Ultra 5G is the latest flagship smartphone from Samsung. It comes with a 6.8-inch Super AMOLED display, Exynos 2200 chipset, 108MP camera, and 5000mAh battery."
-                minLength={400}
-                maxLength={600}
-                rows={8}
-                required
-                value={productDescription}
-                onChange={(e) => setProductDescription(e.target.value)}
-              ></textarea>
-            </div>
-          </div>
-          <div className="flex justify-end items-center">
-            <button
-              className="bg-orange-400 rounded-md px-4 py-2 cursor-pointer text-white hover:bg-green-700 transition-colors duration-300 ease-in-out flex items-center space-x-2 mt-8 disabled:opacity-50"
-              type="submit"
-              disabled={productDisplayImageUploadOngoing}
-            >
-              Add Product
-            </button>
-          </div>
-        </form>
+        {/* Price */}
+        <div>
+          <label htmlFor="price" className="block text-sm font-medium text-gray-700 mb-1">
+            Price ($)
+          </label>
+          <input
+            type="number"
+            id="price"
+            value={productPrice}
+            onChange={(e) => setProductPrice(Number(e.target.value))}
+            min={1}
+            required
+            placeholder="e.g. 999.99"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 bg-gray-50"
+          />
+        </div>
+
+        {/* Brand */}
+        <div>
+          <label htmlFor="brand" className="block text-sm font-medium text-gray-700 mb-1">
+            Brand
+          </label>
+          <input
+            type="text"
+            id="brand"
+            value={productBrand}
+            onChange={(e) => setProductBrand(e.target.value)}
+            minLength={2}
+            maxLength={50}
+            required
+            placeholder="e.g. Apple"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 bg-gray-50"
+          />
+        </div>
+
+        {/* Release Date */}
+        <div>
+          <label htmlFor="releaseDate" className="block text-sm font-medium text-gray-700 mb-1">
+            Release Date
+          </label>
+          <input
+            type="date"
+            id="releaseDate"
+            value={productReleaseDate}
+            onChange={(e) => setProductReleaseDate(e.target.value)}
+            required
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 bg-gray-50"
+          />
+        </div>
+
+        {/* Category */}
+        <div>
+          <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-1">
+            Category
+          </label>
+          <select
+            id="category"
+            value={productCategory}
+            onChange={(e) => setProductCategory(e.target.value)}
+            required
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 bg-gray-50"
+          >
+            <option value="">Select a category</option>
+            <option value="desktop">Desktop</option>
+            <option value="laptop">Laptop</option>
+            <option value="smartphone">Smartphone</option>
+            <option value="watch">Watch</option>
+            <option value="headphone">Headphone</option>
+            <option value="fashion">Fashion</option>
+            <option value="accessories">Accessories</option>
+            <option value="others">Others</option>
+          </select>
+        </div>
       </div>
-    </div>
+
+      {/* Description */}
+      <div className="mt-6">
+        <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
+          Product Description
+        </label>
+        <textarea
+          id="description"
+          value={productDescription}
+          onChange={(e) => setProductDescription(e.target.value)}
+          rows={6}
+          minLength={100}
+          maxLength={600}
+          required
+          placeholder="Provide a detailed description of the product..."
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 bg-gray-50"
+        ></textarea>
+      </div>
+
+      {/* Submit Button */}
+      <div className="mt-8 flex justify-end">
+        <button
+          type="submit"
+          disabled={productDisplayImageUploadOngoing}
+          className="px-6 py-2 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg shadow disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+        >
+          {productDisplayImageUploadOngoing ? "Uploading..." : "Add Product"}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
   );
 };
 

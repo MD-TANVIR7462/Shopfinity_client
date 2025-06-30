@@ -3,16 +3,15 @@ import { setUserInLocalState, useCurrentUser } from "@/redux/features/authSlice"
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { TCurrentUser } from "@/types/commonTypes";
 import { useEffect, useState } from "react";
-import { IoMdHome, IoMdLogOut } from "react-icons/io";
-import { RxCross2 } from "react-icons/rx";
-import { TbShoppingBagEdit } from "react-icons/tb";
 import { Link, Outlet } from "react-router-dom";
 import { toast } from "sonner";
 import demoUserImage from "../../assets/images/babul.png";
 import logo from "../../assets/images/logo.png";
 
+import { IoMdHome, IoMdLogOut, IoMdPerson } from "react-icons/io";
+import { TbLayoutDashboard, TbShoppingBag, TbUserEdit } from "react-icons/tb";
+import { RxCross2 } from "react-icons/rx";
 
-// ... (import statements remain unchanged)
 
 const CustomerDashboard = () => {
   const userInfo = useAppSelector(useCurrentUser);
@@ -62,11 +61,7 @@ const CustomerDashboard = () => {
         className="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-600 rounded-lg sm:hidden hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-green-300"
         onClick={toggleSidebar}
       >
-        <svg
-          className="w-6 h-6 text-green-400"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-        >
+        <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20">
           <path
             clipRule="evenodd"
             fillRule="evenodd"
@@ -97,28 +92,63 @@ const CustomerDashboard = () => {
 
           {/* Close button (Mobile) */}
           <div className="flex justify-end mb-4 sm:hidden">
-            <button
-              className="text-2xl text-green-400 hover:text-green-600"
-              onClick={toggleSidebar}
-            >
+            <button className="text-2xl text-green-400 hover:text-green-600" onClick={toggleSidebar}>
               <RxCross2 />
             </button>
           </div>
 
           <ul className="space-y-2 font-medium">
             {/* Profile (Mobile) */}
-            <Link
-              to="/dashboard/customer/profile"
-              className={`lg:hidden flex items-center space-x-3 rounded-md px-3 py-2 ${
-                activeDashboardRoute === "profile"
-                  ? "bg-green-400 text-white"
-                  : "text-gray-600 hover:bg-green-100"
-              }`}
-              onClick={profileClickHandler}
-            >
-              <img src={userImage} alt="profile" className="w-8 h-8 rounded-full" />
-              <li>{name}</li>
-            </Link>
+            <li className="lg:hidden">
+              <Link
+                to="/dashboard/customer/profile"
+                className={`flex items-center space-x-3 px-3 py-2 rounded-md ${
+                  activeDashboardRoute === "profile" ? "bg-green-500 text-white" : "text-gray-600 hover:bg-green-100"
+                }`}
+                onClick={profileClickHandler}
+              >
+                <img src={userImage} alt="profile" className="w-8 h-8 rounded-full" />
+                <span>{name}</span>
+              </Link>
+            </li>
+
+            {/* Overview */}
+            <li>
+              <Link
+                to="/dashboard/customer/overview"
+                className={`flex items-center space-x-3 p-2 rounded-md transition-all duration-200 ${
+                  activeDashboardRoute === "overview"
+                    ? "bg-green-500 text-white shadow"
+                    : "text-gray-600 hover:bg-green-100 hover:text-green-600"
+                }`}
+                onClick={() => {
+                  setActiveDashboardRoute("overview");
+                  setIsSidebarOpen(false);
+                }}
+              >
+                <TbLayoutDashboard className="text-xl" />
+                <span>Overview</span>
+              </Link>
+            </li>
+
+            {/* Profile */}
+            <li>
+              <Link
+                to="/dashboard/customer/profile"
+                className={`flex items-center space-x-3 p-2 rounded-md transition-all duration-200 ${
+                  activeDashboardRoute === "profile"
+                    ? "bg-green-500 text-white shadow"
+                    : "text-gray-600 hover:bg-green-100 hover:text-green-600"
+                }`}
+                onClick={() => {
+                  setActiveDashboardRoute("profile");
+                  setIsSidebarOpen(false);
+                }}
+              >
+                <IoMdPerson className="text-xl" />
+                <span>Profile</span>
+              </Link>
+            </li>
 
             {/* Orders */}
             <li>
@@ -126,48 +156,44 @@ const CustomerDashboard = () => {
                 to="/dashboard/customer/manage-orders"
                 className={`flex items-center space-x-3 p-2 rounded-md transition-all duration-200 ${
                   activeDashboardRoute === "ordermanagement"
-                    ? "bg-green-200 text-green-800"
-                    : "text-gray-600 hover:bg-green-100"
+                    ? "bg-green-500 text-white shadow"
+                    : "text-gray-600 hover:bg-green-100 hover:text-green-600"
                 }`}
                 onClick={() => {
                   setActiveDashboardRoute("ordermanagement");
                   setIsSidebarOpen(false);
                 }}
               >
-                <TbShoppingBagEdit className="text-xl text-green-800" />
+                <TbShoppingBag className="text-xl" />
                 <span>My Orders</span>
               </Link>
             </li>
 
-            {/* Bottom section */}
-            <div className="absolute bottom-10 space-y-2">
-              <li>
-                <Link
-                  to="/"
-                  className="flex items-center space-x-2 text-gray-600 hover:text-green-500 px-2"
-                  onClick={() => setIsSidebarOpen(false)}
-                >
-                  <IoMdHome />
-                  <span>Back To Home</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/login"
-                  onClick={handleLogout}
-                  className="flex items-center space-x-2 text-gray-600 hover:text-red-500 px-2"
-                >
-                  <IoMdLogOut />
-                  <span>Logout</span>
-                </Link>
-              </li>
-            </div>
+            {/* Bottom Links */}
+            <li className="absolute bottom-10 w-full space-y-2">
+              <Link
+                to="/"
+                className="flex items-center space-x-2 text-gray-600 hover:text-green-500 px-2"
+                onClick={() => setIsSidebarOpen(false)}
+              >
+                <IoMdHome className="text-xl" />
+                <span>Back To Home</span>
+              </Link>
+              <Link
+                to="/login"
+                onClick={handleLogout}
+                className="flex items-center space-x-2 text-gray-600 hover:text-red-500 px-2"
+              >
+                <IoMdLogOut className="text-xl" />
+                <span>Logout</span>
+              </Link>
+            </li>
           </ul>
         </div>
       </aside>
 
-      {/* Main Content Area */}
-      <div className={`transition-all sm:ml-64 p-4`}>
+      {/* Main Content */}
+      <div className="transition-all sm:ml-64 p-4">
         {/* Top Profile (Desktop) */}
         <div className="hidden lg:flex justify-end items-center bg-white py-4 pr-6">
           <Link
@@ -178,7 +204,7 @@ const CustomerDashboard = () => {
             onClick={profileClickHandler}
           >
             <img src={userImage} alt="profile" className="w-8 h-8 rounded-full" />
-            <li className="list-none text-md">{name}</li>
+            <span className="text-md">{name}</span>
           </Link>
         </div>
 
@@ -192,6 +218,4 @@ const CustomerDashboard = () => {
 };
 
 export default CustomerDashboard;
-
-
 
