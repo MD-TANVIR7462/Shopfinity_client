@@ -23,7 +23,7 @@
 - at last, run the project using `yarn run dev` command.
 
 
-### DEMO LOGIN DETAILS
+<!-- ### DEMO LOGIN DETAILS
 
       * Customer :
           - email: democustomer@gmail.com
@@ -35,4 +35,4 @@
 
       * Admin :
           - email: demoadmin@gmail.com
-          - password: admin123
+          - password: admin123 -->
