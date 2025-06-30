@@ -237,140 +237,134 @@ const CustomerProfile = () => {
   }
 
   return (
-    <div>
+    <div className="max-w-[1400px] mx-auto">
       <h3 className="text-center mt-10 lg:mt-14 text-2xl">Profile Management</h3>
-     
+
       <div className="mt-5">
         <div className="w-full md:w-11/12 mx-auto py-5 px-3 relative">
           {isLoading ? (
             <Loader />
           ) : (
-<>
-  <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-    {/* Header */}
-    <div className="relative rounded-xl overflow-hidden shadow bg-white">
-      <img
-        src={coverImage}
-        alt="Cover"
-        className="w-full h-48 object-cover"
-      />
-      <div className="absolute top-4 right-4">
-        <DropdownMenu>
-          <DropdownMenuTrigger className="bg-white p-2 rounded-full shadow hover:shadow-md transition">
-            <CiEdit className="text-xl text-gray-700" />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="bg-white shadow-md rounded-md">
-            <DropdownMenuItem>
-              <button
-                onClick={() => setShowProfileUpdateModal(true)}
-                className="text-sm px-3 py-1 hover:bg-gray-100 w-full text-left"
-              >
-                Update Profile
-              </button>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <button
-                onClick={() => setShowProfilePhotoUpdateModal(true)}
-                className="text-sm px-3 py-1 hover:bg-gray-100 w-full text-left"
-              >
-                Update Profile Photo
-              </button>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <button
-                onClick={() => setShowPasswordUpdateModal(true)}
-                className="text-sm px-3 py-1 hover:bg-gray-100 w-full text-left"
-              >
-                Update Password
-              </button>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </div>
-      {/* Profile Summary */}
-      <div className="flex items-end space-x-6 px-6 -mt-16 pb-6">
-        <img
-          src={userProfileFromDb?.profileImage || userImage}
-          alt={userProfileFromDb?.name}
-          className="w-32 h-32 rounded-full border-4 border-white shadow-md object-cover"
-        />
-        <div>
-          <h1 className="text-2xl font-semibold text-gray-900">
-            {userProfileFromDb?.name}
-          </h1>
-          <p className="text-sm text-gray-500 mt-1">
-            {userProfileFromDb?.role || 'Customer'}
-          </p>
-        </div>
-      </div>
-    </div>
+            <>
+              <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                {/* Header */}
+                <div className="relative rounded-xl overflow-hidden shadow bg-white">
+                  <img src={coverImage} alt="Cover" className="w-full h-48 object-cover" />
+                  <div className="absolute top-4 right-4">
+                    <DropdownMenu>
+                      <DropdownMenuTrigger className="bg-white p-2 rounded-full shadow hover:shadow-md transition">
+                        <CiEdit className="text-xl text-gray-700" />
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent className="bg-white shadow-md rounded-md">
+                        <DropdownMenuItem>
+                          <button
+                            onClick={() => setShowProfileUpdateModal(true)}
+                            className="text-sm px-3 py-1 hover:bg-gray-100 w-full text-left"
+                          >
+                            Update Profile
+                          </button>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <button
+                            onClick={() => setShowProfilePhotoUpdateModal(true)}
+                            className="text-sm px-3 py-1 hover:bg-gray-100 w-full text-left"
+                          >
+                            Update Profile Photo
+                          </button>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <button
+                            onClick={() => setShowPasswordUpdateModal(true)}
+                            className="text-sm px-3 py-1 hover:bg-gray-100 w-full text-left"
+                          >
+                            Update Password
+                          </button>
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </div>
+                  {/* Profile Summary */}
+                  <div className="flex items-end space-x-6 px-6 -mt-16 pb-6">
+                    <img
+                      src={userProfileFromDb?.profileImage || userImage}
+                      alt={userProfileFromDb?.name}
+                      className="w-32 h-32 rounded-full border-4 border-white shadow-md object-cover"
+                    />
+                    <div>
+                      <h1 className="text-2xl font-semibold text-gray-900">{userProfileFromDb?.name}</h1>
+                      <p className="text-sm text-gray-500 mt-1">{userProfileFromDb?.role || "Customer"}</p>
+                    </div>
+                  </div>
+                </div>
 
-    {/* Main Details */}
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-10">
-      {/* About */}
-      <div className="bg-white p-6 rounded-lg shadow-sm border">
-        <h2 className="text-lg font-semibold text-gray-800 mb-2">About</h2>
-        <p className="text-sm text-gray-600 leading-relaxed">
-          I'm passionate about tech, lifestyle, and quality products. I love
-          exploring new deals and sharing insights to help others make smart
-          purchases.
-        </p>
-      </div>
+                {/* Main Details */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-10">
+                  {/* About */}
+                  <div className="bg-white p-6 rounded-lg shadow-sm border">
+                    <h2 className="text-lg font-semibold text-gray-800 mb-2">About</h2>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      I'm passionate about tech, lifestyle, and quality products. I love exploring new deals and sharing
+                      insights to help others make smart purchases.
+                    </p>
+                  </div>
 
-      {/* Contact */}
-      <div className="bg-white p-6 rounded-lg shadow-sm border space-y-2">
-        <h2 className="text-lg font-semibold text-gray-800 mb-2">Contact</h2>
-        <div className="text-sm text-gray-600">
-          <p><strong>Email:</strong> {userProfileFromDb?.email}</p>
-          <p><strong>Phone:</strong> {userProfileFromDb?.address?.mobile}</p>
-        </div>
-      </div>
+                  {/* Contact */}
+                  <div className="bg-white p-6 rounded-lg shadow-sm border space-y-2">
+                    <h2 className="text-lg font-semibold text-gray-800 mb-2">Contact</h2>
+                    <div className="text-sm text-gray-600">
+                      <p>
+                        <strong>Email:</strong> {userProfileFromDb?.email}
+                      </p>
+                      <p>
+                        <strong>Phone:</strong> {userProfileFromDb?.address?.mobile}
+                      </p>
+                    </div>
+                  </div>
 
-      {/* Address */}
-      <div className="bg-white p-6 rounded-lg shadow-sm border space-y-2">
-        <h2 className="text-lg font-semibold text-gray-800 mb-2">Address</h2>
-        <p className="text-sm text-gray-600 leading-relaxed">
-          {userProfileFromDb?.address?.address},<br />
-          {userProfileFromDb?.address?.postalCode}, {userProfileFromDb?.address?.city}<br />
-          {userProfileFromDb?.address?.state}, {userProfileFromDb?.address?.country}
-        </p>
-      </div>
+                  {/* Address */}
+                  <div className="bg-white p-6 rounded-lg shadow-sm border space-y-2">
+                    <h2 className="text-lg font-semibold text-gray-800 mb-2">Address</h2>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      {userProfileFromDb?.address?.address},<br />
+                      {userProfileFromDb?.address?.postalCode}, {userProfileFromDb?.address?.city}
+                      <br />
+                      {userProfileFromDb?.address?.state}, {userProfileFromDb?.address?.country}
+                    </p>
+                  </div>
 
-      {/* Preferences */}
-      <div className="bg-white p-6 rounded-lg shadow-sm border space-y-2 col-span-1 lg:col-span-2">
-        <h2 className="text-lg font-semibold text-gray-800 mb-2">Preferences</h2>
-        <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
-          <li>Interested in Electronics, Fashion, Home Products</li>
-          <li>Receives Weekly Newsletters</li>
-          <li>Frequently shops during sales events</li>
-        </ul>
-      </div>
+                  {/* Preferences */}
+                  <div className="bg-white p-6 rounded-lg shadow-sm border space-y-2 col-span-1 lg:col-span-2">
+                    <h2 className="text-lg font-semibold text-gray-800 mb-2">Preferences</h2>
+                    <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
+                      <li>Interested in Electronics, Fashion, Home Products</li>
+                      <li>Receives Weekly Newsletters</li>
+                      <li>Frequently shops during sales events</li>
+                    </ul>
+                  </div>
 
-      {/* Membership */}
-      <div className="bg-white p-6 rounded-lg shadow-sm border">
-        <h2 className="text-lg font-semibold text-gray-800 mb-2">Membership</h2>
-        <div className="flex items-center justify-between">
-          <span className="inline-block bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">
-            Premium Member
-          </span>
-          <span className="text-sm text-gray-500">Joined: Jan 2024</span>
-        </div>
-      </div>
+                  {/* Membership */}
+                  <div className="bg-white p-6 rounded-lg shadow-sm border">
+                    <h2 className="text-lg font-semibold text-gray-800 mb-2">Membership</h2>
+                    <div className="flex items-center justify-between">
+                      <span className="inline-block bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">
+                        Premium Member
+                      </span>
+                      <span className="text-sm text-gray-500">Joined: Jan 2024</span>
+                    </div>
+                  </div>
 
-      {/* Activity */}
-      <div className="bg-white p-6 rounded-lg shadow-sm border lg:col-span-3">
-        <h2 className="text-lg font-semibold text-gray-800 mb-3">Recent Activity</h2>
-        <ul className="text-sm text-gray-600 space-y-2">
-          <li>✅ Reviewed "Wireless Headphones" – 3 days ago</li>
-          <li>🛒 Ordered "4K Monitor" – 1 week ago</li>
-          <li>❤️ Wishlisted "Smart Home Kit" – 10 days ago</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</>
-
-
+                  {/* Activity */}
+                  <div className="bg-white p-6 rounded-lg shadow-sm border lg:col-span-3">
+                    <h2 className="text-lg font-semibold text-gray-800 mb-3">Recent Activity</h2>
+                    <ul className="text-sm text-gray-600 space-y-2">
+                      <li>✅ Reviewed "Wireless Headphones" – 3 days ago</li>
+                      <li>🛒 Ordered "4K Monitor" – 1 week ago</li>
+                      <li>❤️ Wishlisted "Smart Home Kit" – 10 days ago</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </>
           )}
           {/* profile update modal */}
           <div>

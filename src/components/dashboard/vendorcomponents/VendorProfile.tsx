@@ -235,7 +235,7 @@ const VendorProfile = () => {
   }
 
   return (
-    <div>
+    <div className="max-w-[1400px] mx-auto">
       <h3 className="text-center mt-10 lg:mt-14 text-2xl">Profile Management</h3>
       <div className="mt-5">
         <div className="w-full md:w-11/12 mx-auto py-5 px-3 relative">
