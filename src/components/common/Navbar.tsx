@@ -174,18 +174,18 @@ const Navbar = () => {
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="bg-white mt-2 mr-2 py-3 px-2">
                     <Link to={`/dashboard/${currentUser?.role}/profile`}>
-                      <DropdownMenuItem className="cursor-pointer hover:text-orange-400 transition-all duration-300">
+                      <DropdownMenuItem className="cursor-pointer hover:text-[#528b30] transition-all duration-300">
                         Profile
                       </DropdownMenuItem>
                     </Link>
                     <Link to={`/dashboard/${currentUser?.role}/overview`}>
-                      <DropdownMenuItem className="cursor-pointer hover:text-orange-400 transition-all duration-300 -mt-1">
+                      <DropdownMenuItem className="cursor-pointer hover:text-[#528b30] transition-all duration-300 -mt-1">
                         Dashboard
                       </DropdownMenuItem>
                     </Link>
 
                     <DropdownMenuItem
-                      className="cursor-pointer hover:text-orange-400 transition-all duration-300 mt-2 border-t pt-3 border-gray-300"
+                      className="cursor-pointer hover:text-red-600 transition-all duration-300 mt-2 border-t pt-3 border-gray-300"
                       onClick={logouthandlerfromnavbar}
                     >
                       LogOut

@@ -176,11 +176,11 @@ const ShoppingCart = () => {
                     className="ml-5 md:ml-3 lg:ml-2 mr-10 lg:mr-20"
                   >
                     Apply coupon code{' '}
-                    <span className="text-orange font-semibold">
+                    <span className="text-green font-semibold">
                       {coupon.code}
                     </span>{' '}
                     to get{' '}
-                    <span className="text-orange font-semibold">
+                    <span className="text-green font-semibold">
                       {coupon.discount}% discount
                     </span>{' '}
                     on your total purchase.
@@ -197,130 +197,117 @@ const ShoppingCart = () => {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-y-0 md:gap-x-2 lg:gap-x-6 ">
             <div
               className="col-span-12 md:col-span-7 lg:col-span-8 h-fit shadow rounded"
-              data-aos="fade-down"
-              data-aos-duration="1500"
+              
             >
-              <h4 className="text-custom-black font-semibold py-3 px-4 lg:px-6">
-                Shopping Cart
-              </h4>
-              <div className="relative overflow-x-auto">
-                <table className="w-full text-left rtl:text-right text-pure-gray px-4 lg:px-6">
-                  <thead className="text-pure-gray text-xs uppercase bg-gray-100 ">
-                    <tr>
-                      <th
-                        scope="col"
-                        className="px-4 lg:px-6 py-3 hidden lg:inline-block"
-                      ></th>
-                      <th
-                        scope="col"
-                        className="pl-2 lg:px-6 py-3 text-center lg:text-left"
-                      >
-                        Product
-                      </th>
-                      <th scope="col" className="px-4 lg:px-6 py-3 text-center">
-                        Price
-                      </th>
-                      <th scope="col" className="px-4 lg:px-6 py-3 text-center">
-                        Quantity
-                      </th>
-                      <th scope="col" className="px-4 lg:px-6 py-3 text-center">
-                        Sub-Total
-                      </th>
-                      <th scope="col" className="px-4 lg:px-6 py-3 text-center">
-                        Actions
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {shoppingCartProducts.map((product: TProduct) => (
-                      <tr
-                        className="bg-white border-b  hover:bg-orange-50 transition-all duration-300 ease-in-out"
-                        key={product._id}
-                      >
-                        <td className="lg:px-6 py-4 font-medium text-gray-700 whitespace-nowrap hidden lg:inline-block">
-                          <img
-                            src={product.displayImage}
-                            alt={product.title}
-                            className="w-16 h-16 object-contain"
-                          />
-                        </td>
-                        <td className="px-3 lg:px-6 py-4 font-semibold text-pure-gray text-sm whitespace-nowrap">
-                          {product?.title}
-                        </td>
-                        <td
-                          scope="row"
-                          className="lg:px-6 py-4 text-pure-gray text-sm font-semibold text-center"
-                        >
-                          {`$${product.price}`}
-                        </td>
-                        <td className="lg:px-6 py-4 md:py-8 lg:py-4 flex justify-center">
-                          <div className="flex justify-between items-center border border-gray-200 py-[9px] px-2 w-16 md:w-20 rounded-md">
-                            <button
-                              onClick={() =>
-                                productQuantities[product._id] > 1
-                                  ? updateProductQuantity(
-                                      product._id,
-                                      productQuantities[product._id] - 1
-                                    )
-                                  : null
-                              }
-                              className="font-medium"
-                            >
-                              -
-                            </button>
-                            <span className="text-gray-600 font-semibold">
-                              {productQuantities[product._id]}
-                            </span>
-                            <button
-                              onClick={() =>
-                                updateProductQuantity(
-                                  product._id,
-                                  productQuantities[product._id] + 1
-                                )
-                              }
-                              className="font-medium"
-                            >
-                              +
-                            </button>
-                          </div>
-                        </td>
-                        <td
-                          scope="row"
-                          className="lg:px-6 py-4 text-pure-gray text-sm font-semibold text-center"
-                        >
-                          {`$${Math.floor(
-                            product.price * productQuantities[product._id]
-                          ).toFixed(2)}`}
-                        </td>
-                        <td className="lg:px-6 md:py-4 flex md:space-x-2 justify-center items-center mt-4 md:mt-5">
-                          <Link to={`/product/${product?._id}`}>
-                            <button
-                              className="md:border border-gray-300 p-1 rounded-full text-orange"
-                              title="view details"
-                            >
-                              <PiEyeLight className="md:text-orange md:text-sm " />
-                            </button>
-                          </Link>
-                          <button
-                            className="text-gray-500 p-1 text-sm"
-                            title="remove from wishlist"
-                            onClick={() => removeFromShoppingCart(product)}
-                          >
-                            <RxCross2 className="text-[22px] md:border border-gray-300 p-1 rounded-full -mt-0.5 text-orange" />
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+
+
+
+
+
+
+
+
+
+
+
+      <div className="relative overflow-x-auto shadow-md border border-gray-200">
+  <table className="w-full text-sm text-gray-700 ">
+    <thead className="uppercase bg-gray-50 text-gray-500 text-xs tracking-wide border-gray-200 border-b">
+      <tr>
+        <th className="px-4 py-3 hidden lg:table-cell">Image</th>
+        <th className="pl-2 lg:px-6 py-3 text-center lg:text-left">Product</th>
+        <th className="px-4 py-3 text-center">Price</th>
+        <th className="px-4 py-3 text-center">Quantity</th>
+        <th className="px-4 py-3 text-center">Sub-Total</th>
+        <th className="px-4 py-3 text-center">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {shoppingCartProducts.map((product: TProduct) => (
+        <tr
+          key={product._id}
+          className="bg-white border-b hover:bg-green-100/20 transition duration-200"
+        >
+          <td className="px-4 py-3 hidden lg:table-cell">
+            <img
+              src={product.displayImage}
+              alt={product.title}
+              className="w-14 h-14 object-contain rounded-md shadow-sm"
+            />
+          </td>
+          <td className="px-3 py-4 font-medium">{product?.title}</td>
+          <td className="px-4 py-4 text-center font-semibold text-gray-600">
+            ${product.price}
+          </td>
+          <td className="px-4 py-4 text-center">
+            <div className="flex items-center justify-center border border-gray-300 rounded-md w-fit px-2 py-1 gap-3 bg-gray-50">
+              <button
+                onClick={() =>
+                  productQuantities[product._id] > 1
+                    ? updateProductQuantity(
+                        product._id,
+                        productQuantities[product._id] - 1
+                      )
+                    : null
+                }
+                className="text-gray-600 hover:text-black transition"
+              >
+                –
+              </button>
+              <span className="font-semibold text-gray-700">
+                {productQuantities[product._id]}
+              </span>
+              <button
+                onClick={() =>
+                  updateProductQuantity(
+                    product._id,
+                    productQuantities[product._id] + 1
+                  )
+                }
+                className="text-gray-600 hover:text-black transition"
+              >
+                +
+              </button>
+            </div>
+          </td>
+          <td className="px-4 py-4 text-center font-semibold text-gray-700">
+            ${Math.floor(product.price * productQuantities[product._id]).toFixed(2)}
+          </td>
+          <td className="px-4 py-4 flex justify-center items-center gap-2">
+            <Link to={`/product/${product?._id}`} title="View details">
+              <button className="p-2 rounded-full bg-green-100 hover:bg-green-200 text-green-600 transition">
+                <PiEyeLight className="w-5 h-5" />
+              </button>
+            </Link>
+            <button
+              onClick={() => removeFromShoppingCart(product)}
+              title="Remove from cart"
+              className="p-2 rounded-full bg-red-100 hover:bg-red-200 text-red-600 transition"
+            >
+              <RxCross2 className="w-5 h-5" />
+            </button>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+
+
+
             </div>
             <div className="col-span-12 md:col-span-5 lg:col-span-4 flex flex-col gap-y-6">
               {/* cart total */}
               <div
                 className="shadow rounded px-4"
                 data-aos="fade-down"
-                data-aos-duration="1500"
+                data-aos-duration="1000"
               >
                 <h4 className="text-custom-black font-semibold py-3 px-4">
                   Cart Total

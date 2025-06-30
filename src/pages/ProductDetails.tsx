@@ -121,10 +121,10 @@ const ProductDetails = () => {
             <Magnifier
               imageUrl={product?.displayImage}
               largeImageUrl={product?.displayImage}
-              zoomFactor={2}
+              zoomFactor={1.5}
               imgAlt={product?.title}
               glassDimension={400}
-              glassBorderColor="#be9a35"
+              glassBorderColor="#528b30"
               glassBorderWidth={2}
             />
           </div>
@@ -307,8 +307,7 @@ const ProductDetails = () => {
       {/* product description and reviews */}
       <div
         className="main-container"
-        data-aos="fade-down"
-        data-aos-duration="1500"
+   
       >
         <div className="my-8 md:mt-14 lg:mt-20 border border-gray-200 rounded-md py-4 md:py-6 h-[850px] md:h-[700px] lg:h-[425px]">
           <div className="flex justify-center items-center space-x-10 mb-6 lg:mb-20">

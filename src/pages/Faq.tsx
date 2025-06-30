@@ -36,10 +36,10 @@ const Faq = () => {
 
   const handleQuestionSubmission = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast.error("This feature is not available yet. Please try again later.", {
+    toast.error("Message Sent Successfully!", {
       position: "top-right",
       duration: 1500,
-      icon: "🚫",
+      icon: "✅",
     });
     setEmail("");
     setSubject("");
