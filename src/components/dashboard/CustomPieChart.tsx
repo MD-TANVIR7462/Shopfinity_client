@@ -1,17 +1,14 @@
-import { LabelList, Pie, PieChart } from 'recharts';
-
+import { PieChart, Pie, ResponsiveContainer, Cell, Tooltip } from 'recharts';
 import {
   Card,
   CardContent,
   CardDescription,
   CardFooter,
+  CardHeader,
+  CardTitle,
 } from '@/components/ui/card';
-import {
-  ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from '@/components/ui/chart';
+
+const COLORS = ['#10B981', '#3B82F6', '#F59E0B'];
 
 export function AdminPieChart({
   admin,
@@ -23,62 +20,59 @@ export function AdminPieChart({
   customer: number;
 }) {
   const chartData = [
-    { role: 'admin', users: admin, fill: '#ebc80c' },
-    { role: 'vendor', users: vendor, fill: '#2da5f3' },
-    { role: 'customer', users: customer, fill: '#fa8232' },
+    { name: 'Admin', value: admin },
+    { name: 'Vendor', value: vendor },
+    { name: 'Customer', value: customer },
   ];
 
-  const chartConfig: ChartConfig = {
-    users: {
-      label: 'Users',
-    },
-    admin: {
-      label: 'Admin',
-      color: '#ebc80c',
-    },
-    vendor: {
-      label: 'Vendor',
-      color: '#2da5f3',
-    },
-    customer: {
-      label: 'Customer',
-      color: '#fa8232',
-    },
-  };
-
   return (
-    <Card
-      className="flex flex-col"
-      style={{ boxShadow: 'none', border: '0px solid transparent' }}
-    >
-      <CardContent className="flex-1 pb-0">
-        <ChartContainer
-          config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
-        >
-          <PieChart>
-            <ChartTooltip
-              content={<ChartTooltipContent nameKey="role" hideLabel />}
-            />
-            <Pie data={chartData} dataKey="users">
-              <LabelList
-                dataKey="role"
-                position="inside"
-                stroke="none"
-                fill="black" // Adjust the color as needed
-                fontSize={12}
-                formatter={(value: keyof typeof chartConfig) =>
-                  chartConfig[value]?.label || value
-                }
-              />
-            </Pie>
-          </PieChart>
-        </ChartContainer>
-      </CardContent>
-      <CardFooter className="flex-col gap-2 text-sm">
-        <CardDescription>
-          All-time users pie chart based on role
+    <Card className="w-full  rounded-2xl  border-0 ">
+      <CardHeader className="text-center">
+        <CardTitle className="text-2xl font-bold text-green-700">
+          User Role Distribution
+        </CardTitle>
+        <CardDescription className="text-gray-500">
+          Visual breakdown of user roles in the system
         </CardDescription>
+      </CardHeader>
+
+      <CardContent className="flex justify-center items-center px-4">
+        <ResponsiveContainer width="100%" height={250}>
+          <PieChart>
+            <Pie
+              data={chartData}
+              cx="50%"
+              cy="50%"
+              outerRadius={80}
+              innerRadius={50}
+              dataKey="value"
+              label={({ name, percent }) => `${name} (${(percent * 100).toFixed(0)}%)`}
+              isAnimationActive={true}
+              stroke="none"
+            >
+              {chartData.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+              ))}
+            </Pie>
+            <Tooltip
+              contentStyle={{ backgroundColor: '#f0fdf4', borderColor: '#10B981' }}
+              labelStyle={{ color: '#065f46' }}
+              formatter={(value: number) => [`${value} Users`, 'Count']}
+            />
+          </PieChart>
+        </ResponsiveContainer>
+      </CardContent>
+
+      <CardFooter className="flex justify-center gap-6 text-sm text-gray-600 py-4">
+        {chartData.map((item, idx) => (
+          <div key={idx} className="flex items-center gap-2">
+            <span
+              className="w-3 h-3 rounded-full"
+              style={{ backgroundColor: COLORS[idx] }}
+            ></span>
+            {item.name}
+          </div>
+        ))}
       </CardFooter>
     </Card>
   );

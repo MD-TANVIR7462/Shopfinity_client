@@ -1,25 +1,20 @@
-import Loader from '@/components/common/Loader';
-import CheckRoleAndLogout from '@/hooks/CheckRoleAndLogout';
-import {
-  useBlockOrUnblockUserMutation,
-  useGetAllCustomersQuery,
-  useGetProfileQuery,
-} from '@/redux/api/authApi';
-import { useEffect, useState } from 'react';
-import { IoEyeOutline } from 'react-icons/io5';
-import { MdBlockFlipped } from 'react-icons/md';
-import { RxCross2 } from 'react-icons/rx';
-import { toast } from 'sonner';
-import demoUserImage from '../../../assets/images/babul.png';
+import Loader from "@/components/common/Loader";
+import CheckRoleAndLogout from "@/hooks/CheckRoleAndLogout";
+import { useBlockOrUnblockUserMutation, useGetAllCustomersQuery, useGetProfileQuery } from "@/redux/api/authApi";
+import { useEffect, useState } from "react";
+import { IoEyeOutline } from "react-icons/io5";
+import { MdBlockFlipped } from "react-icons/md";
+import { RxCross2 } from "react-icons/rx";
+import { toast } from "sonner";
+import demoUserImage from "../../../assets/images/babul.png";
 
 const ManageCustomers = () => {
-  CheckRoleAndLogout('admin');
+  CheckRoleAndLogout("admin");
 
-  const [customerProfileToShowInModal, setVendorProfileToShowInModal] =
-    useState<any>({});
+  const [customerProfileToShowInModal, setVendorProfileToShowInModal] = useState<any>({});
   const [showModal, setShowModal] = useState(false);
-  const [page, setPage] = useState<string>('1');
-  const limit = '10';
+  const [page, setPage] = useState<string>("1");
+  const limit = "10";
 
   const allFilters = {
     page: page,
@@ -29,11 +24,9 @@ const ManageCustomers = () => {
   const createQueryString = (obj: any) => {
     const keyValuePairs = [];
     for (const key in obj) {
-      keyValuePairs.push(
-        encodeURIComponent(key) + '=' + encodeURIComponent(obj[key])
-      );
+      keyValuePairs.push(encodeURIComponent(key) + "=" + encodeURIComponent(obj[key]));
     }
-    return keyValuePairs.join('&');
+    return keyValuePairs.join("&");
   };
 
   let queryParams = createQueryString(allFilters);
@@ -48,8 +41,7 @@ const ManageCustomers = () => {
   const { data: profileData, isLoading } = useGetProfileQuery(undefined);
   const userProfileFromDb = profileData?.data;
 
-  const { data: customersData, isLoading: isCustomerLoading } =
-    useGetAllCustomersQuery(undefined);
+  const { data: customersData, isLoading: isCustomerLoading } = useGetAllCustomersQuery(undefined);
   const customers = customersData?.data?.data;
 
   const [blockOrUnblockUser] = useBlockOrUnblockUserMutation();
@@ -64,9 +56,9 @@ const ManageCustomers = () => {
 
     if (response?.statusCode === 200) {
       toast.success(response?.data?.message, {
-        position: 'top-right',
+        position: "top-right",
         duration: 1500,
-        icon: '👏',
+        icon: "👏",
       });
     }
   };
@@ -84,262 +76,177 @@ const ManageCustomers = () => {
 
   const viewCustomerProfile = (id: string) => {
     setShowModal(true);
-    const customerProfile = customers?.find(
-      (customer: any) => customer._id === id
-    );
+    const customerProfile = customers?.find((customer: any) => customer._id === id);
     setVendorProfileToShowInModal(customerProfile);
   };
 
   const userImage = customerProfileToShowInModal?.profileImage || demoUserImage;
 
   return (
-    <div>
-      <h3 className="text-center mt-10 lg:mt-14 text-2xl">Manage Customers</h3>
-      <p className="text-center lg:mt-2 md:text-md lg:w-2/3 lg:mx-auto">
-        Welcome, {userProfileFromDb?.name}! Here you can manage customers. You
-        can view all customers, view a single customer and also can block a
-        customer. In our next update, we will add more features here.
-      </p>
-      <div className="lg:w-11/12 lg:mx-auto">
-        <div className="mb-10 lg:mb-24 lg:mt-16 lg:shadow-md lg:rounded-md lg:py-5 lg:px-6 lg:pb-8">
-          {/* customer list table */}
-          <div className="mt-8">
-            <div className="relative overflow-x-auto">
-              <table className="w-full text-sm text-left rtl:text-right text-gray-500">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
-                  <tr>
-                    <th scope="col" className="px-6 py-3">
-                      Name
-                    </th>
-                    <th scope="col" className="px-6 py-3">
-                      Email
-                    </th>
-                    <th scope="col" className="px-6 py-3">
-                      Account Status
-                    </th>
-                    <th scope="col" className="px-6 py-3">
-                      Total BillPaid
-                    </th>
-                    <th scope="col" className="px-6 py-3">
-                      Actions
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {!isLoading && customers?.length === 0 ? (
-                    <tr>
-                      <td className="text-red-400 font-semibold whitespace-nowrap py-8 pl-12">
-                        No Customer Found
-                      </td>
-                    </tr>
-                  ) : null}
-                  {!isLoading && customers?.length > 0
-                    ? customers.map((customer: any) => (
-                        <tr
-                          className="bg-white border-b hover:bg-orange-50"
-                          key={customer._id}
-                        >
-                          <th
-                            scope="row"
-                            className="px-6 py-6 font-medium text-gray-700 whitespace-nowrap"
-                          >
-                            {customer.name}
-                          </th>
-                          <td className="px-6 py-6">{`${customer.email}`}</td>
-                          <td
-                            className={`px-6 py-6 ${
-                              customer?.isBlocked
-                                ? 'text-red-400'
-                                : 'text-green-400'
-                            }`}
-                            title={`${
-                              customer?.isBlocked
-                                ? 'This user can not login now'
-                                : 'This user can login normally'
-                            }`}
-                          >{`${
-                            customer?.isBlocked ? 'Inactive' : 'Active'
-                          }`}</td>
-                          <td className="px-6 py-6">{`$${customer?.totalPaid}`}</td>
-                          <td className="ml-5 py-6 flex space-x-4 justify-start items-center">
-                            <button
-                              className="text-lg text-[#528b30]"
-                              title="view profile"
-                              onClick={() => viewCustomerProfile(customer._id)}
-                            >
-                              <IoEyeOutline />
-                            </button>
-                            <button
-                              className={`text-md ${
-                                customer.isBlocked
-                                  ? 'text-green-400'
-                                  : 'text-red-400'
-                              } `}
-                              title={customer.isBlocked ? 'Unblock' : 'Block'}
-                              onClick={() =>
-                                handleBlockCustomer(
-                                  customer?._id,
-                                  !customer.isBlocked
-                                )
-                              }
-                            >
-                              <MdBlockFlipped />
-                            </button>
-                            {/* show modal */}
-                            <div>
-                              {showModal ? (
-                                <>
-                                  <div
-                                    className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
-                                    data-aos="zoom-in"
-                                    data-aos-duration="500"
-                                  >
-                                    <div className="relative w-11/12 md:w-96 my-6 mx-auto">
-                                      {/*content*/}
-                                      <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none pb-4">
-                                        {/*header*/}
-                                        <div className="flex justify-between p-5 border-b border-solid border-slate-200 rounded-t items-center">
-                                          <h3 className="text-md font-semibold text-center">
-                                            {customerProfileToShowInModal?.name}
-                                          </h3>
-                                          <button
-                                            className="text-2xl text-red-300 hover:text-red-700 hover:transition-all duration-300 ease-in-out"
-                                            onClick={() =>
-                                              setShowModal(!showModal)
-                                            }
-                                          >
-                                            <RxCross2 />
-                                          </button>
-                                        </div>
-                                        {/*body*/}
-                                        <img
-                                          src={userImage}
-                                          alt={
-                                            customerProfileToShowInModal?.name
-                                          }
-                                          className="h-20 w-20 rounded-full object-cover mx-auto mt-2"
-                                        />
+  <div className="bg-gradient-to-tr from-green-50 via-white to-green-100 min-h-screen py-10 px-4">
+  <h3 className="text-center text-4xl font-extrabold text-gray-800 drop-shadow-sm">
+    Manage Customers
+  </h3>
+  <p className="text-center text-gray-600 mt-2 text-md max-w-2xl mx-auto">
+    Welcome, <span className="text-green-600 font-semibold">{userProfileFromDb?.name}</span>! Manage your customers — view details, block/unblock accounts, and more. 🚀
+  </p>
 
-                                        <h3 className="text-sm mt-4 text-center">
-                                          {customerProfileToShowInModal?.email}
-                                        </h3>
-                                        <h3 className="text-sm mt-0.5 text-center">
-                                          {
-                                            customerProfileToShowInModal
-                                              ?.address?.mobile
-                                          }
-                                        </h3>
-                                        {customerProfileToShowInModal?.address
-                                          ?.address &&
-                                        customerProfileToShowInModal?.address
-                                          ?.city &&
-                                        customerProfileToShowInModal?.address
-                                          ?.country &&
-                                        customerProfileToShowInModal?.address
-                                          ?.postalCode ? (
-                                          <div className="text-sm mt-4 text-center">
-                                            <span>
-                                              {
-                                                customerProfileToShowInModal
-                                                  ?.address?.address
-                                              }
-                                            </span>
-                                            {','}
-                                            <span>
-                                              {
-                                                customerProfileToShowInModal
-                                                  ?.address?.postalCode
-                                              }
-                                            </span>{' '}
-                                            <br />
-                                            <span>
-                                              {
-                                                customerProfileToShowInModal
-                                                  ?.address?.city
-                                              }
-                                              {','}
-                                              {
-                                                customerProfileToShowInModal
-                                                  ?.address?.state
-                                              }
-                                              {','}
-                                              {
-                                                customerProfileToShowInModal
-                                                  ?.address?.country
-                                              }
-                                            </span>
-                                          </div>
-                                        ) : (
-                                          <span className="mt-3 text-center text-sm text-red-400">
-                                            This customer did'nt update his
-                                            details yet!
-                                          </span>
-                                        )}
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className="opacity-25 fixed inset-0 z-40 bg-black transition-all duration-300"></div>
-                                </>
-                              ) : null}
-                            </div>
-                          </td>
-                        </tr>
-                      ))
-                    : null}
-                </tbody>
-              </table>
+  <div className="w-full lg:w-11/12 mx-auto mt-12">
+    <div className="bg-white rounded-2xl shadow-2xl p-6 lg:p-8 border border-green-100">
+      {/* Table */}
+      <div className="overflow-x-auto rounded-lg">
+        <table className="w-full text-sm text-left text-gray-700">
+          <thead className="bg-green-100 text-green-700 text-sm uppercase tracking-wide">
+            <tr>
+              <th className="px-6 py-4">Name</th>
+              <th className="px-6 py-4">Email</th>
+              <th className="px-6 py-4">Status</th>
+              <th className="px-6 py-4">Total Paid</th>
+              <th className="px-6 py-4 text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-100 bg-white">
+            {!isLoading && customers?.length === 0 && (
+              <tr>
+                <td colSpan={5} className="py-10 text-center text-red-500 font-semibold">
+                  🚫 No Customers Found
+                </td>
+              </tr>
+            )}
 
-              {/* pagination */}
-              {isLoading || customers?.length === 0 ? (
-                <div></div>
-              ) : (
-                <div
-                  className={`flex justify-end my-5 ${
-                    customers?.length < 5 ? 'mt-[200px]' : 'mt-4'
+            {customers?.map((customer: any) => (
+              <tr
+                key={customer._id}
+                className="hover:bg-green-50 transition-all duration-150 ease-in-out"
+              >
+                <td className="px-6 py-4 font-semibold">{customer.name}</td>
+                <td className="px-6 py-4">{customer.email}</td>
+                <td
+                  className={`px-6 py-4 font-medium ${
+                    customer.isBlocked ? 'text-red-500' : 'text-green-600'
                   }`}
                 >
+                  {customer.isBlocked ? 'Inactive' : 'Active'}
+                </td>
+                <td className="px-6 py-4">${customer.totalPaid}</td>
+                <td className="px-6 py-4 flex justify-center gap-4">
                   <button
-                    className={`px-3 py-1 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 disabled:cursor-not-allowed disabled:hover:bg-gray-200 ${
-                      customers?.length < 11 ? 'mr-2' : ''
-                    }`}
-                    onClick={() => handlePageChange(Number(page) - 1)}
-                    disabled={Number(page) === 1}
+                    title="View Profile"
+                    className="p-2 rounded-full bg-green-100 text-green-600 hover:bg-green-200 hover:scale-105 transition"
+                    onClick={() => viewCustomerProfile(customer._id)}
                   >
-                    Prev
+                    <IoEyeOutline size={20} />
                   </button>
-                  {[...Array(Math.min(totalPages, 5)).keys()].map((index) => {
-                    const pageNumber = Number(page) - 2 + index;
-                    // Check if pageNumber is within valid range and greater than 0
-                    if (pageNumber > 0 && pageNumber <= totalPages) {
-                      return (
-                        <button
-                          key={pageNumber}
-                          className={`mx-2 px-3 py-1 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 disabled:cursor-not-allowed disabled:hover:bg-gray-200 ${
-                            Number(page) === pageNumber ? 'font-bold' : ''
-                          }`}
-                          onClick={() => handlePageChange(pageNumber)}
-                          disabled={Number(page) === pageNumber}
-                        >
-                          {pageNumber}
-                        </button>
-                      );
+                  <button
+                    title={customer.isBlocked ? 'Unblock' : 'Block'}
+                    className={`p-2 rounded-full ${
+                      customer.isBlocked
+                        ? 'bg-green-100 text-green-600 hover:bg-green-200'
+                        : 'bg-red-100 text-red-500 hover:bg-red-200'
+                    } hover:scale-105 transition`}
+                    onClick={() =>
+                      handleBlockCustomer(customer._id, !customer.isBlocked)
                     }
-                    return null; // Render nothing for invalid pageNumber
-                  })}
-                  <button
-                    className="px-3 py-1 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 disabled:cursor-not-allowed disabled:hover:bg-gray-200"
-                    onClick={() => handlePageChange(Number(page) + 1)}
-                    disabled={Number(page) === totalPages}
                   >
-                    Next
+                    <MdBlockFlipped size={20} />
                   </button>
-                </div>
-              )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Pagination */}
+      {customers?.length > 0 && (
+        <div className="flex justify-end mt-8 space-x-2">
+          <button
+            className="px-3 py-1 rounded bg-gray-100 text-gray-600 hover:bg-gray-200 transition disabled:opacity-50"
+            onClick={() => handlePageChange(Number(page) - 1)}
+            disabled={Number(page) === 1}
+          >
+            Prev
+          </button>
+          {[...Array(Math.min(totalPages, 5)).keys()].map((index) => {
+            const pageNumber = Number(page) - 2 + index;
+            if (pageNumber > 0 && pageNumber <= totalPages) {
+              return (
+                <button
+                  key={pageNumber}
+                  className={`px-3 py-1 rounded transition ${
+                    Number(page) === pageNumber
+                      ? 'bg-green-500 text-white font-semibold'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                  onClick={() => handlePageChange(pageNumber)}
+                  disabled={Number(page) === pageNumber}
+                >
+                  {pageNumber}
+                </button>
+              );
+            }
+            return null;
+          })}
+          <button
+            className="px-3 py-1 rounded bg-gray-100 text-gray-600 hover:bg-gray-200 transition disabled:opacity-50"
+            onClick={() => handlePageChange(Number(page) + 1)}
+            disabled={Number(page) === totalPages}
+          >
+            Next
+          </button>
+        </div>
+      )}
+    </div>
+  </div>
+
+  {/* Modal */}
+  {showModal && (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+      <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-6 relative">
+        <button
+          className="absolute top-4 right-4 text-red-400 hover:text-red-600 transition"
+          onClick={() => setShowModal(false)}
+        >
+          <RxCross2 size={20} />
+        </button>
+
+        <div className="flex flex-col items-center gap-3 mt-4">
+          <img
+            src={userImage}
+            alt={customerProfileToShowInModal?.name}
+            className="w-20 h-20 rounded-full object-cover shadow"
+          />
+          <h3 className="text-lg font-bold text-gray-800">
+            {customerProfileToShowInModal?.name}
+          </h3>
+          <p className="text-sm text-gray-600">{customerProfileToShowInModal?.email}</p>
+          <p className="text-sm text-gray-600">
+            {customerProfileToShowInModal?.address?.mobile}
+          </p>
+
+          {customerProfileToShowInModal?.address?.address ? (
+            <div className="text-center text-sm text-gray-500 mt-2 space-y-1">
+              <p>
+                {customerProfileToShowInModal.address.address},{' '}
+                {customerProfileToShowInModal.address.postalCode}
+              </p>
+              <p>
+                {customerProfileToShowInModal.address.city},{' '}
+                {customerProfileToShowInModal.address.state},{' '}
+                {customerProfileToShowInModal.address.country}
+              </p>
             </div>
-          </div>
+          ) : (
+            <p className="text-sm text-red-400 mt-3 text-center">
+              This customer hasn't updated their details yet!
+            </p>
+          )}
         </div>
       </div>
     </div>
+  )}
+</div>
+
   );
 };
 

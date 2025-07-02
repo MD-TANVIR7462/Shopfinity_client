@@ -14,7 +14,6 @@ import { toast } from "sonner";
 import demoUserImage from "../../assets/images/babul.png";
 import logo from "../../assets/images/logo.png";
 import ScrollToTop from "../ui/ToTop";
-import { TbShoppingBagEdit } from "react-icons/tb";
 
 const AdminDashboard = () => {
   const userInfo = useAppSelector(useCurrentUser);
@@ -72,8 +71,7 @@ const AdminDashboard = () => {
 
   return (
     <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900">
-      <ScrollToTop />
-      {/* Sidebar Toggle Button for mobile */}
+
       <button
         aria-label="Open sidebar"
         onClick={toggleSidebar}
@@ -248,14 +246,14 @@ const AdminDashboard = () => {
           flex-1 min-h-screen flex flex-col 
           transition-margin duration-300 ease-in-out
           sm:ml-64
-          p-6 sm:p-10
+       p-4 md:p-10
           bg-gray-50 dark:bg-gray-900
         `}
       >
         {/* Top Bar */}
         <div className="hidden lg:flex justify-end items-center bg-white dark:bg-gray-800 rounded-md px-6 py-4 shadow-md mb-8">
           <Link
-            to="/dashboard/vendor/profile"
+            to="/dashboard/admin/profile"
             onClick={profileClickHandler}
             className={`flex items-center space-x-3 cursor-pointer transition-colors ${
               activeDashboardRoute === "profile"
