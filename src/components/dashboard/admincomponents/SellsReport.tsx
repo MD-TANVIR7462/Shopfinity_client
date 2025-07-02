@@ -1,285 +1,170 @@
-'use client';
+"use client";
 
-import Loader from '@/components/common/Loader';
-import CheckRoleAndLogout from '@/hooks/CheckRoleAndLogout';
-import { useGetProfileQuery } from '@/redux/api/authApi';
-import { useGetAllOrdersForAdminHistoryQuery } from '@/redux/api/orderApi';
-import { useEffect, useState } from 'react';
+import Loader from "@/components/common/Loader";
+import CheckRoleAndLogout from "@/hooks/CheckRoleAndLogout";
+import { useGetProfileQuery } from "@/redux/api/authApi";
+import { useGetAllOrdersForAdminHistoryQuery } from "@/redux/api/orderApi";
+import { useEffect, useMemo, useState } from "react";
 
 const SellsReport = () => {
-  CheckRoleAndLogout('admin');
+  CheckRoleAndLogout("admin");
 
-  const [timeframe, setTimeframe] = useState<string>('yearly');
-  const [customersEmail, setCustomersEmail] = useState<string>('');
+  const [timeframe, setTimeframe] = useState("yearly");
+  const [customersEmail, setCustomersEmail] = useState("");
+  const [page, setPage] = useState(1);
+  const limit = 10;
 
-  /* pagination */
-  const [page, setPage] = useState<string>('1');
-  const limit = '10';
-  const handlePageChange = (page: number) => {
-    setPage(page.toString());
+  const handlePageChange = (newPage: number) => {
+    setPage(newPage);
   };
 
-  /* query */
-  const allFilters = {
-    page: page,
-    limit: limit,
-    timeframe: timeframe,
-    customersEmail: customersEmail,
-  };
+  const queryParams = useMemo(() => {
+    const query = new URLSearchParams();
+    query.set("page", page.toString());
+    query.set("limit", limit.toString());
+    query.set("timeframe", timeframe);
+    if (customersEmail) query.set("customersEmail", customersEmail);
+    return query.toString();
+  }, [page, limit, timeframe, customersEmail]);
 
-  const createQueryString = (obj: any) => {
-    const keyValuePairs = [];
-    for (const key in obj) {
-      keyValuePairs.push(
-        encodeURIComponent(key) + '=' + encodeURIComponent(obj[key])
-      );
-    }
-    return keyValuePairs.join('&');
-  };
+  const { data: orders, isLoading: isAllOrdersLoading } = useGetAllOrdersForAdminHistoryQuery(queryParams, {
+    refetchOnMountOrArgChange: true,
+  });
 
-  let queryParams = createQueryString(allFilters);
-
-  useEffect(() => {
-    queryParams = createQueryString({
-      page,
-      limit,
-      timeframe,
-      customersEmail,
-    });
-  }, [page, limit, customersEmail, timeframe]);
-
-  const { data: orders, isLoading: isAllOrdersLoading } =
-    useGetAllOrdersForAdminHistoryQuery(queryParams, {
-      refetchOnMountOrArgChange: true,
-    });
+  const { data: profileData, isLoading: isProfileLoading } = useGetProfileQuery(undefined);
+  const userProfileFromDb = profileData?.data;
   const allOrders = orders?.data?.data;
 
-  const { data: profileData, isLoading } = useGetProfileQuery(undefined);
-  const userProfileFromDb = profileData?.data;
-
   const totalItems = orders?.data?.meta?.total || 0;
-  const totalPages = Math.ceil(Number(totalItems) / Number(limit));
+  const totalPages = Math.ceil(totalItems / limit);
 
-  if (isLoading) {
-    return <Loader />;
-  }
+  if (isProfileLoading) return <Loader />;
 
   return (
-    <div>
-      <h3 className="text-center mt-10 lg:mt-14 text-2xl">Sells Report</h3>
-      <p className="text-center lg:mt-2 md:text-md lg:w-2/3 lg:mx-auto">
-        Welcome, {userProfileFromDb?.name}! Here you can see total sells history
-        of Shopinity. You can view daily sells, monthly sells, weekly sells or
-        yearly sells. You will get a proper idea of your business's growth.
+    <div className="px-4 md:px-8 lg:px-16 py-10 bg-gray-50 min-h-screen">
+      {/* Header */}
+      <h3 className="text-center text-3xl font-bold text-gray-800">Sales Report</h3>
+      <p className="text-center text-gray-600 max-w-2xl mx-auto mt-2">
+        Welcome, <span className="font-medium text-gray-800">{userProfileFromDb?.name}</span>! Track your shop's
+        performance through daily, weekly, monthly, or yearly sales statistics.
       </p>
 
-      {/* buttons */}
-      <div className="main-container lg:w-11/12 lg:mx-auto my-3 lg:my-0">
-        <div className="flex flex-col md:flex-row space-y-2 mt-5 justify-end items-center space-x-2 lg:space-x-4">
+      Timeframe Buttons
+      <div className="flex flex-wrap justify-center gap-3 mt-8">
+        {["daily", "weekly", "monthly", "yearly"].map((label) => (
           <button
-            className={`${
-              timeframe === 'daily' ? 'bg-red-400' : 'bg-red-200'
-            } rounded-md px-6 py-1 cursor-pointer text-white  transition-colors duration-300 ease-in-out mt-3`}
-            onClick={() => setTimeframe('daily')}
+            key={label}
+            className={`capitalize px-6 py-2 rounded-md font-medium shadow-sm transition-all duration-300 text-white ${
+              timeframe === label ? "bg-red-500" : "bg-red-300 hover:bg-red-400"
+            }`}
+            onClick={() => {
+              setTimeframe(label);
+              setPage(1); // reset to first page when changing filter
+            }}
           >
-            Daily
+            {label}
           </button>
-          <button
-            className={`${
-              timeframe === 'weekly' ? 'bg-red-400' : 'bg-red-200'
-            } rounded-md px-6 py-1 cursor-pointer text-white  transition-colors duration-300 ease-in-out`}
-            onClick={() => setTimeframe('weekly')}
-          >
-            Weekly
-          </button>
-          <button
-            className={`${
-              timeframe === 'monthly' ? 'bg-red-400' : 'bg-red-200'
-            } rounded-md px-6 py-1 cursor-pointer text-white  transition-colors duration-300 ease-in-out`}
-            onClick={() => setTimeframe('monthly')}
-          >
-            Monthly
-          </button>
-          <button
-            className={`${
-              timeframe === 'yearly' ? 'bg-red-400' : 'bg-red-200'
-            } rounded-md px-6 py-1 cursor-pointer text-white  transition-colors duration-300 ease-in-out`}
-            onClick={() => setTimeframe('yearly')}
-          >
-            Yearly
-          </button>
+        ))}
+      </div>
+
+      {/* Summary Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+        <div className="bg-white shadow rounded-lg p-6 flex flex-col items-center text-center">
+          <h3 className="text-4xl font-bold text-red-500">{allOrders?.completedSells ?? 0}</h3>
+          <p className="text-gray-700 mt-2 text-lg font-medium">Sales Completed</p>
+        </div>
+        <div className="bg-white shadow rounded-lg p-6 flex flex-col items-center text-center">
+          <h3 className="text-4xl font-bold text-green-500">${allOrders?.totalSells?.toFixed(2) ?? 0}</h3>
+          <p className="text-gray-700 mt-2 text-lg font-medium">Total Sales</p>
+        </div>
+        <div className="bg-white shadow rounded-lg p-6 flex flex-col items-center text-center">
+          <h3 className="text-4xl font-bold text-blue-500">${allOrders?.gizmobuyProfit?.toFixed(2) ?? 0}</h3>
+          <p className="text-gray-700 mt-2 text-lg font-medium">Shopinity Profit</p>
         </div>
       </div>
 
-      {/* summary */}
-      <div className="main-container lg:w-11/12 lg:mx-auto my-3 lg:my-0">
-        <div className="grid grid-cols-12 gap-y-6 lg:gap-x-12 mt-6 md:mt-8 lg:mt-14">
-          <div className="h-44 col-span-12 lg:col-span-4 py-5 px-3 shadow-md rounded-md flex flex-col justify-center items-center gap-y-5">
-            <h3 className={`gradientTitle text-4xl font-bold`}>
-              {allOrders?.completedSells === undefined
-                ? 0
-                : allOrders?.completedSells}
-            </h3>
-            <p className="text-xl font-semibold">Sells Completed</p>
-          </div>
-          <div className="h-44 col-span-12 lg:col-span-4 py-5 px-3 shadow-md rounded-md flex flex-col justify-center items-center gap-y-5">
-            <h3 className={`gradientTitle text-4xl font-bold`}>
-              {`$${
-                allOrders?.totalSells?.toFixed(2) === undefined
-                  ? 0
-                  : allOrders?.totalSells?.toFixed(2)
-              }`}
-            </h3>
-            <p className="text-xl font-semibold">Total Sells</p>
-          </div>
-          <div className="h-44 col-span-12 lg:col-span-4 py-5 px-3 shadow-md rounded-md flex flex-col justify-center items-center gap-y-5">
-            <h3 className={`gradientTitle text-4xl font-bold`}>
-              {`$${
-                allOrders?.gizmobuyProfit?.toFixed(2) === undefined
-                  ? 0
-                  : allOrders?.gizmobuyProfit?.toFixed(2)
-              }`}
-            </h3>
-            <p className="text-xl font-semibold">Shopinity Profit</p>
-          </div>
-        </div>
+      {/* Order Table */}
+      <div className="mt-12 overflow-x-auto bg-white shadow rounded-lg">
+        <table className="min-w-full divide-y divide-gray-200 text-sm text-gray-600">
+          <thead className="bg-gray-100 text-gray-700 text-xs uppercase">
+            <tr>
+              <th className="px-6 py-4 text-left">Order ID</th>
+              <th className="px-6 py-4 text-left">Customer Email</th>
+              <th className="px-6 py-4 text-left">Date</th>
+              <th className="px-6 py-4 text-left">Payment</th>
+              <th className="px-6 py-4 text-left">Total</th>
+            </tr>
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-100">
+            {isAllOrdersLoading ? (
+              <tr>
+                <td colSpan={5} className="text-center py-8">
+                  <div className="animate-spin size-10 border-4 border-red-500 border-t-transparent rounded-full mx-auto"></div>
+                </td>
+              </tr>
+            ) : allOrders?.orders?.length === 0 ? (
+              <tr>
+                <td colSpan={5} className="text-center text-red-400 py-8 font-medium">
+                  No Orders Found
+                </td>
+              </tr>
+            ) : (
+              allOrders?.orders?.map((order: any) => (
+                <tr key={order?.orderId} className="hover:bg-gray-50">
+                  <td className="px-6 py-4 font-medium text-gray-800">{order?.orderId}</td>
+                  <td className="px-6 py-4">{order?.orderBy}</td>
+                  <td className="px-6 py-4">{order?.createdAt?.slice(0, 10)}</td>
+                  <td className="px-6 py-4">
+                    <span
+                      className={`inline-block px-2 py-1 rounded text-xs font-semibold ${
+                        order?.isPaid ? "bg-green-100 text-green-700" : "bg-red-100 text-red-600"
+                      }`}
+                    >
+                      {order?.isPaid ? "Paid" : "Unpaid"}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 font-semibold text-gray-700">${order?.totalBill}</td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
       </div>
 
-      {/* order list table */}
-      <div className="lg:w-11/12 lg:mx-auto">
-        <div className="mb-10 lg:mb-24 mt-6 lg:mt-10 lg:shadow-md lg:rounded-md lg:py-5 lg:px-6 lg:pb-8">
-          <div className="mt-0">
-            <div className="relative overflow-x-auto">
-              <table className="w-full text-sm text-left rtl:text-right text-gray-500">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
-                  <tr>
-                    <th scope="col" className="px-6 py-3">
-                      Order ID
-                    </th>
-                    <th scope="col" className="px-6 py-3">
-                      Customer Email
-                    </th>
-                    <th scope="col" className="px-6 py-3">
-                      Date of Order
-                    </th>
-                    <th scope="col" className="px-6 py-3">
-                      Payment Status
-                    </th>
-                    <th scope="col" className="px-6 py-3">
-                      Bill Paid
-                    </th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {
-                    // if orders are loading
-                    isAllOrdersLoading ? (
-                      <div className="mx-auto my-6">
-                        <div className="flex justify-center items-center">
-                          <div className="flex justify-center items-center">
-                            <div className="animate-spin rounded-full size-12 border-b-2 border-red-500"></div>
-                          </div>
-                        </div>
-                      </div>
-                    ) : null
-                  }
-                  {!isAllOrdersLoading && allOrders?.orders?.length === 0 ? (
-                    <tr>
-                      <td className="text-red-400 font-semibold whitespace-nowrap py-8 pl-12">
-                        No Order Found
-                      </td>
-                    </tr>
-                  ) : null}
-                  {!isAllOrdersLoading && allOrders?.orders?.length > 0
-                    ? allOrders?.orders?.map((order: any) => (
-                        <tr
-                          className="bg-white border-b hover:bg-orange-50"
-                          key={order?.orderId}
-                        >
-                          <th
-                            scope="row"
-                            className="px-6 py-6 font-medium text-gray-700 whitespace-nowrap"
-                          >
-                            {order?.orderId}
-                          </th>
-                          <td className="px-6 py-6">{`${order?.orderBy}`}</td>
-                          <td className="px-6 py-6">{`${order?.createdAt.slice(
-                            0,
-                            10
-                          )}`}</td>
-                          <td
-                            className={`px-6 py-6 ${
-                              order?.isPaid
-                                ? 'text-green-400 text-sm'
-                                : 'text-red-400'
-                            }`}
-                          >
-                            {order?.isPaid ? 'paid' : 'unpaid'}
-                          </td>
-                          <td
-                            className={`px-6 py-6 ${
-                              order?.isPaid ? '' : 'text-red-400'
-                            }`}
-                          >{`$${order?.totalBill}`}</td>
-                        </tr>
-                      ))
-                    : null}
-                </tbody>
-              </table>
-
-              {/*  pagination */}
-              {isAllOrdersLoading || allOrders?.orders?.length === 0 ? (
-                <div></div>
-              ) : (
-                <div
-                  className={`flex justify-end my-5 ${
-                    allOrders?.orders?.length < 5 ? 'mt-[200px]' : 'mt-4'
-                  }`}
-                >
-                  <button
-                    className={`px-3 py-1 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 disabled:cursor-not-allowed disabled:hover:bg-gray-200 ${
-                      allOrders?.orders?.length < 5 ? 'mr-2' : ''
-                    }`}
-                    onClick={() => handlePageChange(Number(page) - 1)}
-                    disabled={Number(page) === 1}
-                  >
-                    Prev
-                  </button>
-                  {[...Array(Math.min(totalPages, 5)).keys()].map((index) => {
-                    const pageNumber = Number(page) - 2 + index;
-                    // Check if pageNumber is within valid range and greater than 0
-                    if (pageNumber > 0 && pageNumber <= totalPages) {
-                      return (
-                        <button
-                          key={pageNumber}
-                          className={`mx-2 px-3 py-1 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 disabled:cursor-not-allowed disabled:hover:bg-gray-200 ${
-                            Number(page) === pageNumber ? 'font-bold' : ''
-                          }`}
-                          onClick={() => handlePageChange(pageNumber)}
-                          disabled={Number(page) === pageNumber}
-                        >
-                          {pageNumber}
-                        </button>
-                      );
-                    }
-                    return null; // Render nothing for invalid pageNumber
-                  })}
-                  <button
-                    className={`px-3 py-1 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 disabled:cursor-not-allowed disabled:hover:bg-gray-200 ${
-                      allOrders?.orders?.length < 12 ? 'ml-2' : ''
-                    }`}
-                    onClick={() => handlePageChange(Number(page) + 1)}
-                    disabled={Number(page) === totalPages}
-                  >
-                    Next
-                  </button>
-                </div>
-              )}
-            </div>
-          </div>
+      {/* Pagination */}
+      {!isAllOrdersLoading && allOrders?.orders?.length > 0 && (
+        <div className="flex justify-center mt-8 gap-2">
+          <button
+            onClick={() => handlePageChange(page - 1)}
+            disabled={page === 1}
+            className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Prev
+          </button>
+          {[...Array(Math.min(totalPages, 5)).keys()]
+            .map((index) => page - 2 + index)
+            .filter((p) => p > 0 && p <= totalPages)
+            .map((pageNum) => (
+              <button
+                key={pageNum}
+                onClick={() => handlePageChange(pageNum)}
+                disabled={page === pageNum}
+                className={`px-3 py-1 rounded ${
+                  page === pageNum ? "bg-red-500 text-white font-bold" : "bg-gray-200 hover:bg-gray-300 text-gray-700"
+                }`}
+              >
+                {pageNum}
+              </button>
+            ))}
+          <button
+            onClick={() => handlePageChange(page + 1)}
+            disabled={page === totalPages}
+            className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Next
+          </button>
         </div>
-      </div>
+      )}
     </div>
   );
 };

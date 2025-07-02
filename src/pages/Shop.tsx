@@ -609,8 +609,8 @@ const Shop = () => {
               {isLoading ? (
                <Loader/>
               ) : products?.length < 1 ? (
-                <div className="mt-16 col-span-12">
-                  <p className="text-xl lg:text-2xl text-orange font-semibold text-center">
+                <div className="mt-16 col-span-12 min-h-[500px]">
+                  <p className="text-xl lg:text-2xl text-orange font-semibold text-center ">
                     No product found
                   </p>
                   <div className="text-center">

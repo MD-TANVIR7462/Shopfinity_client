@@ -69,7 +69,7 @@ const AdminOverview = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 md:px-6b mt-10 ">
+    <div className="min-h-screen bg-gray-50 md:px-6 mt-10 ">
       <h1 className="text-3xl font-bold text-green-700 mb-10">Admin Dashboard</h1>
 
       {/* Top Section: Charts */}

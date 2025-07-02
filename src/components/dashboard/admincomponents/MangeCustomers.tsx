@@ -83,15 +83,15 @@ const ManageCustomers = () => {
   const userImage = customerProfileToShowInModal?.profileImage || demoUserImage;
 
   return (
-  <div className="bg-gradient-to-tr from-green-50 via-white to-green-100 min-h-screen py-10 px-4">
-  <h3 className="text-center text-4xl font-extrabold text-gray-800 drop-shadow-sm">
+  <div className=" to-green-100 min-h-screen py-10 px-12">
+  <h3 className="text-center text-3xl font-semibold text-green-600 drop-shadow-sm">
     Manage Customers
   </h3>
   <p className="text-center text-gray-600 mt-2 text-md max-w-2xl mx-auto">
     Welcome, <span className="text-green-600 font-semibold">{userProfileFromDb?.name}</span>! Manage your customers — view details, block/unblock accounts, and more. 🚀
   </p>
 
-  <div className="w-full lg:w-11/12 mx-auto mt-12">
+  <div className=" mx-auto mt-12 w-11/12">
     <div className="bg-white rounded-2xl shadow-2xl p-6 lg:p-8 border border-green-100">
       {/* Table */}
       <div className="overflow-x-auto rounded-lg">

@@ -84,15 +84,15 @@ const ManageOrders = () => {
   }
 
   return (
-    <div className="main-container pb-12 bg-gradient-to-tr from-green-50 via-white to-green-100 min-h-screen">
-      <h3 className="text-center mt-10 lg:mt-14 text-3xl font-bold text-gray-800">Manage Orders</h3>
+    <div className="main-container pb-12   min-h-screen">
+      <h3 className="text-center mt-10 lg:mt-14 text-3xl font-bold text-green-600">Manage Orders</h3>
       <p className="text-center text-gray-600 mt-2 text-md max-w-2xl mx-auto px-4">
         Welcome, <span className="text-green-600 font-semibold">{userProfileFromDb?.name}</span>! You can manage and
         update your orders here. Note: Orders can't be canceled once placed.
       </p>
 
       {/* Order list table */}
-      <div className="w-full lg:w-11/12 mx-auto mt-12">
+      <div className="w-full  mx-auto mt-12">
         <div className="bg-white shadow-xl rounded-xl p-6 lg:p-8 border border-green-100">
           <div className="relative overflow-x-auto rounded-lg">
             <table className="w-full text-sm text-left text-gray-700">
