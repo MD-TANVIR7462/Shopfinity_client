@@ -223,7 +223,7 @@ body {
 @media (max-width: 1024px) {
   .swipercontainer {
     width: 100vw;
-    margin-left: -15px;
+    margin-left: -2%;
   }
 }
 

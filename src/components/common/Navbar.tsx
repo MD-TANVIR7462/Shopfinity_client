@@ -67,7 +67,7 @@ const Navbar = () => {
             {currentUser?.name && (
               <>
                 {" "}
-                <span className="text-orange-400">, {currentUser.name}</span>
+                <span className="text-orange-400">, {currentUser?.name}</span>
               </>
             )}
           </h2>
