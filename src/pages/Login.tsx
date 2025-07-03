@@ -99,7 +99,7 @@ const Login = () => {
     <>
       <div className="main-container flex justify-center items-center min-h-screen">
         <div
-          className="shadow-lg pb-8 w-11/12 md:6/12 lg:w-5/12"
+          className="shadow-lg pb-8 w-full md:6/12 lg:w-5/12"
        
         >
           <div className="shadow py-3">
