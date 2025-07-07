@@ -19,7 +19,7 @@ const CheckRoleAndLogout = (userRole: string) => {
       if (role !== userRole) {
         try {
           const response = await fetch(
-            'https://gizmobuy-backend.vercel.app/api/auth/logout',
+            'http://localhost:5000/api/auth/logout',
             {
               method: 'POST',
               credentials: 'include',

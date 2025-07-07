@@ -44,7 +44,7 @@ const ResetPassword = () => {
 
     try {
       const response = await fetch(
-        'https://gizmobuy-backend.vercel.app/api/auth/reset-forgotten-password',
+        'http://localhost:5000/api/auth/reset-forgotten-password',
         {
           method: 'POST',
           headers: {

@@ -111,7 +111,7 @@ const AddProduct = () => {
 
     // check if image size is less than 1MB and type is jpg, jpeg or png
     if (productDisplayImage) {
-      if (productDisplayImage.size > 1024 * 1024) {
+      if (productDisplayImage.size > 2048 * 2048) {
         setProductDisplayImageUploadOngoing(false);
         toast.error('Image size must be less than 1MB', {
           position: 'top-right',

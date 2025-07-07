@@ -14,7 +14,7 @@ import {
 import { RootState } from '../store';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'https://gizmobuy-backend.vercel.app/api',
+  baseUrl: 'http://localhost:5000/api',
   credentials: 'include',
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState)?.auth?.token;
@@ -45,7 +45,7 @@ const baseQueryWithRefreshToken: BaseQueryFn<
 
   if (result?.error?.status === 401) {
     const response = await fetch(
-      'https://gizmobuy-backend.vercel.app/api/auth/refresh-token',
+      'http://localhost:5000/api/auth/refresh-token',
       {
         method: 'POST',
         credentials: 'include',

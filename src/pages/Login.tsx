@@ -22,7 +22,7 @@ const Login = () => {
   const token = useAppSelector(useCurrentToken);
 
   useEffect(() => {
-    fetch('https://gizmobuy-backend.vercel.app/api/auth/verify-token', {
+    fetch('http://localhost:5000/api/auth/verify-token', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -84,9 +84,9 @@ const Login = () => {
   };
 
   const demoCredentials = {
-    admin: { email: 'demoadmin@gmail.com', password: 'admin123' },
-    vendor: { email: 'demovendor@gmail.com', password: 'vendor123' },
-    customer: { email: 'democustomer@gmail.com', password: 'customer123' },
+    admin: { email: 'admin@gmail.com', password: 'customer7462' },
+    vendor: { email: 'tanvir.dev3@gmail.com', password: 'Evan7462@T' },
+    customer: { email: 'customer@gmail.com', password: 'customer7462' },
   };
 
   const handleFillCredentials = (role: 'admin' | 'vendor' | 'customer') => {
