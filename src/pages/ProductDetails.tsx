@@ -245,9 +245,7 @@ const ProductDetails = () => {
                   <BsCart2 /> Add to Cart
                 </button>
               )}
-              <button className="border border-[#5eb313d3]  text-[#5eb313d3]  hover:bg-green-50 font-semibold py-3 px-6 rounded-lg shadow-sm transition-all flex items-center gap-2">
-                Buy Now
-              </button>
+           
             </div>
 
             <div className="border-t border-gray-100 pt-4">
