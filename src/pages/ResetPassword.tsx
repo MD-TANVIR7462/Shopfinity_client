@@ -39,6 +39,7 @@ const ResetPassword = () => {
           duration: 2500,
         }
       );
+      
       return;
     }
 
