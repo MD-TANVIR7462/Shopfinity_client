@@ -67,7 +67,7 @@ const Navbar = () => {
             {currentUser?.name && (
               <>
                 {" "}
-                <span className="text-orange-400">, {currentUser?.name}</span>
+                <span className="text-yellow-300">, {currentUser?.name}</span>
               </>
             )}
           </h2>
@@ -120,7 +120,7 @@ const Navbar = () => {
           <div className="main-container flex justify-between items-center">
             {/* Logo */}
             <Link to="/" className="flex gap-x-2 items-center w-24">
-              <img src={logo} alt="Shopinity" className="w-6 lg:w-10 h-6 lg:h-10 object-cover" />
+              <img src={logo} alt="Shopinity" className="w-6 lg:w-16 h-6 lg:h-16 object-cover" />
               <span className="font-bold text-xl lg:text-2xl">Shopinity</span>
             </Link>
 

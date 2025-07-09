@@ -1,7 +1,7 @@
 import Loader from "@/components/common/Loader";
 import CheckRoleAndLogout from "@/hooks/CheckRoleAndLogout";
 import { useChangePasswordMutation, useGetProfileQuery, useUpdateProfileMutation } from "@/redux/api/authApi";
-import demoUserImage from "../../../assets/images/babul.png";
+import demoUserImage from "../../../assets/images/demoimg.png";
 import coverImage from "../../../assets/images/cover.jpg";
 
 import {

@@ -4,7 +4,7 @@ import {
   useGetCustomerOverviewMetaDataQuery,
   useGetProfileQuery,
 } from '@/redux/api/authApi';
-import demoUserImage from '../../../assets/images/babul.png';
+import demoUserImage from '../../../assets/images/demoimg.png';
 import { FaClipboardList, FaCheckCircle, FaDollarSign, FaShoppingCart, FaStar } from 'react-icons/fa';
 import { MdLocationOn, MdEmail, MdPhone } from 'react-icons/md';
 

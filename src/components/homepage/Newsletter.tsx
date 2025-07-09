@@ -30,7 +30,7 @@ const Newsletter = () => {
           <input
             type="email"
             className="bg-white py-2 lg:py-4 px-2 lg:px-3 rounded-sm w-[300px] md:w-96 lg:w-[500px] focus:outline-none focus:border-none text-custom-black relative"
-            placeholder="e.g. babulakterfsd@gmail.com"
+            placeholder="e.g. example@gmail.com"
             required
             value={emailToBeSubscribed}
             onChange={(e) => setEmailToBeSubscribed(e.target.value)}

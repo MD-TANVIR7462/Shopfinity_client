@@ -96,12 +96,6 @@ export const categoriesData = [
     image: 'https://m.media-amazon.com/images/I/615dO345QeL.jpg',
   },
   {
-    id: 2,
-    name: 'Laptop',
-    image:
-      'https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1npTP?ver=829f',
-  },
-  {
     id: 3,
     name: 'SmartPhone',
     image:
@@ -125,10 +119,10 @@ export const categoriesData = [
     image:
       'https://res.cloudinary.com/dzqkcbgew/image/upload/v1710831266/nike_zmyce6.png',
   },
-  // {
-  //   id: 7,
-  //   name: 'Accessories',
-  //   image:
-  //     'https://www.ryanscomputers.com/storage/products/main/amazon-echo-dot-4th-gen-smart-speaker-with-alexa-41609308368.webp',
-  // },
+  {
+    id: 7,
+    name: 'Accessories',
+    image:
+      'https://www.ryanscomputers.com/storage/products/main/amazon-echo-dot-4th-gen-smart-speaker-with-alexa-41609308368.webp',
+  },
 ];

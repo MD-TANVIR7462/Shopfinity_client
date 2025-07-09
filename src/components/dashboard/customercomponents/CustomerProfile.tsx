@@ -12,7 +12,7 @@ import { CiEdit } from "react-icons/ci";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
 import { toast } from "sonner";
-import demoUserImage from "../../../assets/images/babul.png";
+import demoUserImage from "../../../assets/images/demoimg.png";
 import coverImage from "../../../assets/images/cover.jpg";
 import Loader from "@/components/common/Loader";
 

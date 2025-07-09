@@ -6,7 +6,7 @@ import { IoEyeOutline } from "react-icons/io5";
 import { MdBlockFlipped } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
 import { toast } from "sonner";
-import demoUserImage from "../../../assets/images/babul.png";
+import demoUserImage from "../../../assets/images/demoimg.png";
 
 const ManageCustomers = () => {
   CheckRoleAndLogout("admin");

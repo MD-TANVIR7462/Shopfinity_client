@@ -11,7 +11,7 @@ const blogs = [
   {
     id: 1,
     image: blog1,
-    name: 'Kristin',
+    name: 'Jalal uddin',
     date: '19 Dec, 2023',
     comments: 453,
     title:
@@ -22,7 +22,7 @@ const blogs = [
   {
     id: 2,
     image: blog2,
-    name: 'Babul',
+    name: 'Akib',
     date: '14 Jan, 2024',
     comments: 234,
     title:
@@ -33,7 +33,7 @@ const blogs = [
   {
     id: 3,
     image: blog3,
-    name: 'Akter',
+    name: 'Tanvir',
     date: '23 Mar, 2024',
     comments: 345,
     title:

@@ -10,7 +10,7 @@ const coreTeamMemberOptions = [
   {
     id: 1,
     img: member1,
-    name: 'Babul Akter',
+    name: 'Tajul islam Tanvir',
     position: 'CEO & Founder',
   },
   {

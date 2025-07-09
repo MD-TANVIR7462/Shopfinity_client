@@ -4,7 +4,7 @@ import {
   useGetProfileQuery,
   useGetVendorOverviewMetaDataQuery,
 } from '@/redux/api/authApi';
-import demoUserImage from '../../../assets/images/babul.png';
+import demoUserImage from '../../../assets/images/demoimg.png';
 
 const VendorOverview = () => {
   CheckRoleAndLogout('vendor');

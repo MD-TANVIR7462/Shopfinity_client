@@ -8,7 +8,7 @@ import { RxCross2 } from "react-icons/rx";
 import { TbShoppingBagEdit } from "react-icons/tb";
 import { Link, Outlet } from "react-router-dom";
 import { toast } from "sonner";
-import demoUserImage from "../../assets/images/babul.png";
+import demoUserImage from "../../assets/images/demoimg.png";
 import logo from "../../assets/images/logo.png";
 import ScrollToTop from "../ui/ToTop";
 

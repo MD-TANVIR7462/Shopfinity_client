@@ -5,7 +5,7 @@ import { TCurrentUser } from "@/types/commonTypes";
 import { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { toast } from "sonner";
-import demoUserImage from "../../assets/images/babul.png";
+import demoUserImage from "../../assets/images/demoimg.png";
 import logo from "../../assets/images/logo.png";
 
 import { IoMdHome, IoMdLogOut, IoMdPerson } from "react-icons/io";
