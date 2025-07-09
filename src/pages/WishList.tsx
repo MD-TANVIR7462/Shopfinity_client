@@ -152,7 +152,7 @@ const WishList = () => {
           </div>
         </>
       ) : (
-        <div className="flex flex-col items-center justify-center h-96 text-center" data-aos="zoom-in">
+        <div className="flex flex-col items-center justify-center h-96 text-center">
           <h4 className="text-2xl font-semibold text-custom-black">Your wishlist is empty</h4>
           <p className="text-gray-600 mt-2">Start exploring our products and save your favorites.</p>
           <Link to="/shop">

@@ -294,7 +294,7 @@ const ShoppingCart = () => {
             </div>
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center h-96" data-aos="zoom-in" data-aos-duration="1500">
+          <div className="flex flex-col items-center justify-center h-96" data-aos="zoom-in" >
             <h4 className="text-2xl font-semibold text-custom-black text-center">Your shopping cart is empty</h4>
             <Link to="/shop">
               <button className="bg-orange text-white py-2 px-4 rounded mt-4">Shop Now</button>
