@@ -23,20 +23,14 @@ const Home = () => {
     <div>
       <ScrollToTop />
       <div className="main-container">
-        {/* banner */}
         <Carousel />
-        {/* features */}
         <FeatureSummary />
-        {/* best deals */}
-        <BestDeals products={products} />
-        {/* shop categories */}
+        {data?.data?.data && <BestDeals products={products} />}
         <ShopCategories />
         <Macbook />
       </div>
-
-      {/* new arrivals */}
       <WhyChooseUs />
-      {data && (
+      {data?.data?.data && (
         <div className="main-container">
           <NewArrivals products={products} />
           <SamsungS22 />
