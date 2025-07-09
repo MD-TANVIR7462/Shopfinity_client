@@ -17,7 +17,6 @@ import { useGetProductsQuery } from "@/redux/api/productApi";
 const Home = () => {
   const { data, isLoading } = useGetProductsQuery(undefined);
   const products = data?.data?.data;
-  console.log(products);
   if (isLoading) return <Loader />;
 
   return (
@@ -37,11 +36,13 @@ const Home = () => {
 
       {/* new arrivals */}
       <WhyChooseUs />
-      <div className="main-container">
-        <NewArrivals products={products} />
-        <SamsungS22 />
-        <Collections products={products} />
-      </div>
+      {data && (
+        <div className="main-container">
+          <NewArrivals products={products} />
+          <SamsungS22 />
+          <Collections products={products} />
+        </div>
+      )}
       <Testimonials />
       <Newsletter />
     </div>
