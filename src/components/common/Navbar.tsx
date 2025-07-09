@@ -32,7 +32,7 @@ const Navbar = () => {
   const shoppingCartProducts = useAppSelector(useShoppingCartProducts);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/auth/verify-token", {
+    fetch("https://shipfinity-backend.vercel.app/api/auth/verify-token", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ token }),

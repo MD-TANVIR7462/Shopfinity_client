@@ -45,7 +45,7 @@ const ResetPassword = () => {
 
     try {
       const response = await fetch(
-        'http://localhost:5000/api/auth/reset-forgotten-password',
+        'https://shipfinity-backend.vercel.app/api/auth/reset-forgotten-password',
         {
           method: 'POST',
           headers: {

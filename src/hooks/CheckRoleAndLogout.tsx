@@ -19,7 +19,7 @@ const CheckRoleAndLogout = (userRole: string) => {
       if (role !== userRole) {
         try {
           const response = await fetch(
-            'http://localhost:5000/api/auth/logout',
+            'https://shipfinity-backend.vercel.app/api/auth/logout',
             {
               method: 'POST',
               credentials: 'include',

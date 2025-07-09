@@ -11,7 +11,7 @@ const ProtectedRoute = ({ children }: { children: ReactNode }) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/auth/verify-token', {
+    fetch('https://shipfinity-backend.vercel.app/api/auth/verify-token', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
