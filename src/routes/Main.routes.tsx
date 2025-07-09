@@ -1,32 +1,32 @@
-import AboutUs from '@/pages/AboutUs';
-import Checkout from '@/pages/Checkout';
-import Faq from '@/pages/Faq';
-import Home from '@/pages/Home';
-import Login from '@/pages/Login';
-import OrderCancel from '@/pages/OrderCancel';
-import OrderFail from '@/pages/OrderFail';
-import OrderSuccess from '@/pages/OrderSuccess';
-import ProductDetails from '@/pages/ProductDetails';
-import ResetPassword from '@/pages/ResetPassword';
-import Shop from '@/pages/Shop';
-import ShoppingCart from '@/pages/ShoppingCart';
-import Signup from '@/pages/Signup';
-import Support from '@/pages/Support';
-import WishList from '@/pages/WishList';
-import ProtectedRoute from './ProtectedRoute';
+import AboutUs from "@/pages/AboutUs";
+import Checkout from "@/pages/Checkout";
+import Faq from "@/pages/Faq";
+import Home from "@/pages/Home";
+import Login from "@/pages/Login";
+import OrderCancel from "@/pages/OrderCancel";
+import OrderFail from "@/pages/OrderFail";
+import OrderSuccess from "@/pages/OrderSuccess";
+import ProductDetails from "@/pages/ProductDetails";
+import ResetPassword from "@/pages/ResetPassword";
+import Shop from "@/pages/Shop";
+import ShoppingCart from "@/pages/ShoppingCart";
+import Signup from "@/pages/Signup";
+import Support from "@/pages/Support";
+import WishList from "@/pages/WishList";
+import ProtectedRoute from "./ProtectedRoute";
 
 export const mainRoutePaths = [
   { index: true, element: <Home /> },
-  { path: 'about-us', element: <AboutUs /> },
-  { path: 'faq', element: <Faq /> },
-  { path: 'shop', element: <Shop /> },
-  { path: '/product/:id', element: <ProductDetails /> },
-  { path: 'support', element: <Support /> },
-  { path: 'login', element: <Login /> },
-  { path: 'forgot-password', element: <ResetPassword /> },
-  { path: 'signup', element: <Signup /> },
+  { path: "about-us", element: <AboutUs /> },
+  { path: "faq", element: <Faq /> },
+  { path: "shop", element: <Shop /> },
+  { path: "/product/:id", element: <ProductDetails /> },
+  { path: "support", element: <Support /> },
+  { path: "login", element: <Login /> },
+  { path: "forgot-password", element: <ResetPassword /> },
+  { path: "signup", element: <Signup /> },
   {
-    path: '/:id/wishlist',
+    path: "/:id/wishlist",
     element: (
       <ProtectedRoute>
         <WishList />
@@ -34,7 +34,7 @@ export const mainRoutePaths = [
     ),
   },
   {
-    path: '/:id/shopping-cart',
+    path: "/:id/shopping-cart",
     element: (
       <ProtectedRoute>
         <ShoppingCart />
@@ -42,7 +42,7 @@ export const mainRoutePaths = [
     ),
   },
   {
-    path: '/:id/check-out',
+    path: "/:id/check-out",
     element: (
       <ProtectedRoute>
         <Checkout />
@@ -50,7 +50,7 @@ export const mainRoutePaths = [
     ),
   },
   {
-    path: '/order-success',
+    path: "/order-success",
     element: (
       <ProtectedRoute>
         <OrderSuccess />
@@ -58,7 +58,7 @@ export const mainRoutePaths = [
     ),
   },
   {
-    path: '/order-fail',
+    path: "/order-fail",
     element: (
       <ProtectedRoute>
         <OrderFail />
@@ -66,7 +66,7 @@ export const mainRoutePaths = [
     ),
   },
   {
-    path: '/order-cancel',
+    path: "/order-cancel",
     element: (
       <ProtectedRoute>
         <OrderCancel />
