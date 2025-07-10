@@ -106,7 +106,7 @@ const ProductDetails = () => {
   if (isError) {
     return <NotFound />;
   }
-
+console.log(product)
   return (
     <div className="bg-gray-50">
       {/* Product Details Section */}
@@ -209,7 +209,7 @@ const ProductDetails = () => {
               </div>
               <div className="flex items-center">
                 <span className="text-gray-500 mr-2">Seller:</span>
-                <span className="font-medium">{product?.vendor?.name}</span>
+                <span className="font-medium">{ product?.vendor?.name}</span>
               </div>
             </div>
 

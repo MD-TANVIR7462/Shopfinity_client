@@ -46,8 +46,8 @@ const CustomerProfile = () => {
     e.preventDefault();
     setUpdateProfilePhotoOngoing(true);
 
-    const preset_key = "test";
-    const cloud_name = "test";
+    const preset_key = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+    const cloud_name = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 
     const formData = new FormData();
 
@@ -82,7 +82,7 @@ const CustomerProfile = () => {
         return;
       } else {
         formData.append("file", newProfileImage);
-        formData.append("upload_preset", preset_key);
+        formData.append("upload_preset", preset_key!);
       }
     }
 
@@ -168,11 +168,11 @@ const CustomerProfile = () => {
   const handleUpdatePassword = async (e: any) => {
     e.preventDefault();
 
-    if (
-      userProfileFromDb?.email === "demoadmin@gmail.com" ||
-      userProfileFromDb?.email === "democustomer@gmail.com" ||
-      userProfileFromDb?.email === "demovendor@gmail.com"
-    ) {
+ if (
+      userProfileFromDb?.email === "customer@gmail.com" ||
+      userProfileFromDb?.email === "tanvir.dev3@gmail.com" ||
+      userProfileFromDb?.email === "admin@gmail.com"
+    )  {
       toast.error(`Any visitor may use this demo account, so you can't change this account's password`, {
         position: "top-right",
         duration: 1500,
@@ -180,7 +180,6 @@ const CustomerProfile = () => {
       });
       return;
     }
-
     if (!currentPassword || !newPassword) {
       toast.error("Please fill all the fields", {
         position: "top-right",

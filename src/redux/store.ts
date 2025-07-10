@@ -58,7 +58,7 @@ export const store = configureStore({
     shoppingCart: persistedShoppingCartReducer,
     payment: persistedPaymentReducer,
   },
-  //   devTools: process.env.NODE_ENV !== 'production',
+  //   devTools: import.meta.env.NODE_ENV !== 'production',
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

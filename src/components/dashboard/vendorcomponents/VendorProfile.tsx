@@ -46,8 +46,7 @@ const VendorProfile = () => {
     e.preventDefault();
     setUpdateProfilePhotoOngoing(true);
 
-    const preset_key = "test";
-    const cloud_name = "test";
+    const preset_key = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
 
     const formData = new FormData();
 
@@ -82,16 +81,17 @@ const VendorProfile = () => {
         return;
       } else {
         formData.append("file", newProfileImage);
-        formData.append("upload_preset", preset_key);
+        formData.append("upload_preset", preset_key!);
       }
     }
 
-    fetch(`https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`, {
+    fetch(import.meta.env.VITE_CLOUDINARY_URL as string, {
       method: "POST",
       body: formData,
     })
       .then((response) => response.json())
       .then(async (data) => {
+        console.log(data);
         const response = await updateProfile({
           name: userProfileFromDb?.name,
           profileImage: data?.secure_url ? data?.secure_url : userProfileFromDb?.profileImage,
@@ -167,11 +167,11 @@ const VendorProfile = () => {
 
   const handleUpdatePassword = async (e: any) => {
     e.preventDefault();
-
+    console.log(userProfileFromDb.email);
     if (
-      userProfileFromDb?.email === "demoadmin@gmail.com" ||
-      userProfileFromDb?.email === "democustomer@gmail.com" ||
-      userProfileFromDb?.email === "demovendor@gmail.com"
+      userProfileFromDb?.email === "customer@gmail.com" ||
+      userProfileFromDb?.email === "tanvir.dev3@gmail.com" ||
+      userProfileFromDb?.email === "admin@gmail.com"
     ) {
       toast.error(`Any visitor may use this demo account, so you can't change this account's password`, {
         position: "top-right",
@@ -267,7 +267,7 @@ const VendorProfile = () => {
                           onClick={() => setShowProfilePhotoUpdateModal(true)}
                           className="text-sm px-3 py-1 hover:bg-gray-100 w-full text-left"
                         >
-                          Update Logo
+                          Update profile
                         </button>
                       </DropdownMenuItem>
                       <DropdownMenuItem>

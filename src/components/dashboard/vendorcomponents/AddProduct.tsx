@@ -55,8 +55,8 @@ const AddProduct = () => {
       releaseDate: productReleaseDate,
     };
 
-    const preset_key = "tanvir7462";
-    const cloud_name = "dsmbm1bvy";
+        const preset_key = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+    const cloud_name = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 
     const formData = new FormData();
 
@@ -133,7 +133,7 @@ const AddProduct = () => {
         return;
       } else {
         formData.append('file', productDisplayImage);
-        formData.append('upload_preset', preset_key);
+        formData.append('upload_preset', preset_key!);
       }
     }
 

@@ -107,7 +107,7 @@ const ManageVendors = () => {
           <tr>
             <th className="px-6 py-4">Name</th>
             <th className="px-6 py-4">Email</th>
-            <th className="px-6 py-4">Products</th>
+            {/* <th className="px-6 py-4">Products</th> */}
             <th className="px-6 py-4">Status</th>
             <th className="px-6 py-4">Actions</th>
           </tr>
@@ -129,7 +129,7 @@ const ManageVendors = () => {
                   {vendor.name}
                 </td>
                 <td className="px-6 py-4">{vendor.email}</td>
-                <td className="px-6 py-4">53</td>
+                {/* <td className="px-6 py-4">53</td> */}
                 <td
                   className={`px-6 py-4 font-semibold ${
                     vendor?.isBlocked ? 'text-red-500' : 'text-green-500'

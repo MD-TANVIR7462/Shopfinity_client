@@ -84,9 +84,9 @@ const Login = () => {
   };
 
   const demoCredentials = {
-    admin: { email: 'admin@gmail.com', password: 'customer7462' },
-    vendor: { email: 'vendor@gmail.com', password: 'Evan7462@T' },
-    customer: { email: 'customer@gmail.com', password: 'Evan7462@T' },
+    admin: { email: 'admin@gmail.com', password: 'myshopfinity2' },
+    vendor: { email: 'tanvir.dev3@gmail.com', password: 'myshopfinity2' },
+    customer: { email: 'customer@gmail.com', password: 'myshopfinity2' },
   };
 
   const handleFillCredentials = (role: 'admin' | 'vendor' | 'customer') => {
