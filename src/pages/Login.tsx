@@ -85,8 +85,8 @@ const Login = () => {
 
   const demoCredentials = {
     admin: { email: 'admin@gmail.com', password: 'customer7462' },
-    vendor: { email: 'tanvir.dev3@gmail.com', password: 'Evan7462@T' },
-    customer: { email: 'customer@gmail.com', password: 'customer7462' },
+    vendor: { email: 'vendor@gmail.com', password: 'Evan7462@T' },
+    customer: { email: 'customer@gmail.com', password: 'Evan7462@T' },
   };
 
   const handleFillCredentials = (role: 'admin' | 'vendor' | 'customer') => {
