@@ -131,6 +131,9 @@ const Navbar = () => {
 
             {/* Desktop Menu */}
             <ul className="hidden lg:flex space-x-6 text-base text-white">
+              <Link to="/">
+                <li className="hover:text-yellow-500">Home</li>
+              </Link>
               <Link to="/shop">
                 <li className="hover:text-yellow-500">Shop</li>
               </Link>
@@ -199,6 +202,11 @@ const Navbar = () => {
             }`}
           >
             <ul className="flex flex-col items-center gap-4 text-white">
+              <Link to="/">
+                <li onClick={toggleMenu} className="hover:text-yellow-400">
+                  Home
+                </li>
+              </Link>
               <Link to="/shop">
                 <li onClick={toggleMenu} className="hover:text-yellow-400">
                   Shop
