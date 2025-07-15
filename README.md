@@ -7,7 +7,6 @@
 ## 🌐 Live Preview
 
 👉 [Visit Shopfinity](https://myshopfinity.vercel.app/)  
-🔐 *Frontend only — Admin functionality coming soon.*
 
 ---
 
